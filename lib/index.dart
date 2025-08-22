@@ -1,2 +1,2 @@
 // Export pages
-export '/pages/home_page/home_page_widget.dart' show HomePageWidget;
+export '/lista_viagens/lista_viagens_widget.dart' show ListaViagensWidget;
