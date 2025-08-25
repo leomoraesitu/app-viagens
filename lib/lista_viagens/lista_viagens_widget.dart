@@ -526,7 +526,7 @@ class _ListaViagensWidgetState extends State<ListaViagensWidget>
                                                                               Icon(
                                                                             Icons.star_rate,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                                FlutterFlowTheme.of(context).warning,
                                                                           ),
                                                                           direction:
                                                                               Axis.horizontal,
@@ -1057,7 +1057,7 @@ class _ListaViagensWidgetState extends State<ListaViagensWidget>
                                                                               Icon(
                                                                             Icons.star_rate,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                                FlutterFlowTheme.of(context).warning,
                                                                           ),
                                                                           direction:
                                                                               Axis.horizontal,
