@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'detalhes_viagem_widget.dart' show DetalhesViagemWidget;
+import 'primary_rating_bar_widget.dart' show PrimaryRatingBarWidget;
 import 'package:flutter/material.dart';
 
-class DetalhesViagemModel extends FlutterFlowModel<DetalhesViagemWidget> {
+class PrimaryRatingBarModel extends FlutterFlowModel<PrimaryRatingBarWidget> {
   @override
   void initState(BuildContext context) {}
 

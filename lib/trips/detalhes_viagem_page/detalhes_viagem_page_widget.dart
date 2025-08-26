@@ -1,33 +1,35 @@
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '/shared_u_i/primary_button/primary_button_widget.dart';
+import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'detalhes_viagem_model.dart';
-export 'detalhes_viagem_model.dart';
+import 'detalhes_viagem_page_model.dart';
+export 'detalhes_viagem_page_model.dart';
 
-class DetalhesViagemWidget extends StatefulWidget {
-  const DetalhesViagemWidget({super.key});
+class DetalhesViagemPageWidget extends StatefulWidget {
+  const DetalhesViagemPageWidget({super.key});
 
-  static String routeName = 'DetalhesViagem';
-  static String routePath = '/detalhesViagem';
+  static String routeName = 'DetalhesViagemPage';
+  static String routePath = '/detalhesViagemPage';
 
   @override
-  State<DetalhesViagemWidget> createState() => _DetalhesViagemWidgetState();
+  State<DetalhesViagemPageWidget> createState() =>
+      _DetalhesViagemPageWidgetState();
 }
 
-class _DetalhesViagemWidgetState extends State<DetalhesViagemWidget> {
-  late DetalhesViagemModel _model;
+class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
+  late DetalhesViagemPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DetalhesViagemModel());
+    _model = createModel(context, () => DetalhesViagemPageModel());
   }
 
   @override
@@ -43,7 +45,7 @@ class _DetalhesViagemWidgetState extends State<DetalhesViagemWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -52,7 +54,7 @@ class _DetalhesViagemWidgetState extends State<DetalhesViagemWidget> {
           buttonSize: 60.0,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).primaryText,
+            color: FlutterFlowTheme.of(context).primaryBackground,
             size: 30.0,
           ),
           onPressed: () async {
@@ -68,6 +70,7 @@ class _DetalhesViagemWidgetState extends State<DetalhesViagemWidget> {
                   fontStyle:
                       FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
+                color: FlutterFlowTheme.of(context).primaryBackground,
                 letterSpacing: 0.0,
                 fontWeight:
                     FlutterFlowTheme.of(context).headlineMedium.fontWeight,
@@ -141,17 +144,10 @@ class _DetalhesViagemWidgetState extends State<DetalhesViagemWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        RatingBarIndicator(
-                          itemBuilder: (context, index) => Icon(
-                            Icons.star_rate,
-                            color: FlutterFlowTheme.of(context).warning,
-                          ),
-                          direction: Axis.horizontal,
-                          rating: 4.0,
-                          unratedColor:
-                              FlutterFlowTheme.of(context).secondaryText,
-                          itemCount: 5,
-                          itemSize: 16.0,
+                        wrapWithModel(
+                          model: _model.primaryRatingBarModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: PrimaryRatingBarWidget(),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -234,66 +230,14 @@ class _DetalhesViagemWidgetState extends State<DetalhesViagemWidget> {
               ),
             ),
           ),
-          Container(
-            width: MediaQuery.sizeOf(context).width * 1.0,
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primary,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4.0,
-                  color: Color(0x55000000),
-                  offset: Offset(
-                    0.0,
-                    2.0,
-                  ),
-                )
-              ],
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(0.0),
-                bottomRight: Radius.circular(0.0),
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0),
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 34.0),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Editar',
-                options: FFButtonOptions(
-                  width: 130.0,
-                  height: 60.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
-                  textStyle: FlutterFlowTheme.of(context).displaySmall.override(
-                        font: GoogleFonts.interTight(
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .fontStyle,
-                        ),
-                        color: FlutterFlowTheme.of(context).info,
-                        fontSize: 20.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FlutterFlowTheme.of(context)
-                            .displaySmall
-                            .fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).displaySmall.fontStyle,
-                      ),
-                  elevation: 0.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+            child: wrapWithModel(
+              model: _model.primaryButtonModel,
+              updateCallback: () => safeSetState(() {}),
+              child: PrimaryButtonWidget(
+                label: 'Editar',
+                variant: ButtonVariant.primary,
               ),
             ),
           ),
