@@ -1,26 +1,27 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'lista_viagens_model.dart';
-export 'lista_viagens_model.dart';
+import 'lista_viagens_page_model.dart';
+export 'lista_viagens_page_model.dart';
 
-class ListaViagensWidget extends StatefulWidget {
-  const ListaViagensWidget({super.key});
+class ListaViagensPageWidget extends StatefulWidget {
+  const ListaViagensPageWidget({super.key});
 
-  static String routeName = 'ListaViagens';
-  static String routePath = '/listaViagens';
+  static String routeName = 'ListaViagensPage';
+  static String routePath = '/listaViagensPage';
 
   @override
-  State<ListaViagensWidget> createState() => _ListaViagensWidgetState();
+  State<ListaViagensPageWidget> createState() => _ListaViagensPageWidgetState();
 }
 
-class _ListaViagensWidgetState extends State<ListaViagensWidget>
+class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
     with TickerProviderStateMixin {
-  late ListaViagensModel _model;
+  late ListaViagensPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -29,7 +30,7 @@ class _ListaViagensWidgetState extends State<ListaViagensWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ListaViagensModel());
+    _model = createModel(context, () => ListaViagensPageModel());
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
@@ -521,23 +522,13 @@ class _ListaViagensWidgetState extends State<ListaViagensWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        RatingBarIndicator(
-                                                                          itemBuilder: (context, index) =>
-                                                                              Icon(
-                                                                            Icons.star_rate,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).warning,
-                                                                          ),
-                                                                          direction:
-                                                                              Axis.horizontal,
-                                                                          rating:
-                                                                              4.0,
-                                                                          unratedColor:
-                                                                              FlutterFlowTheme.of(context).secondaryText,
-                                                                          itemCount:
-                                                                              5,
-                                                                          itemSize:
-                                                                              16.0,
+                                                                        wrapWithModel(
+                                                                          model:
+                                                                              _model.primaryRatingBarModel1,
+                                                                          updateCallback: () =>
+                                                                              safeSetState(() {}),
+                                                                          child:
+                                                                              PrimaryRatingBarWidget(),
                                                                         ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -1052,23 +1043,13 @@ class _ListaViagensWidgetState extends State<ListaViagensWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        RatingBarIndicator(
-                                                                          itemBuilder: (context, index) =>
-                                                                              Icon(
-                                                                            Icons.star_rate,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).warning,
-                                                                          ),
-                                                                          direction:
-                                                                              Axis.horizontal,
-                                                                          rating:
-                                                                              4.0,
-                                                                          unratedColor:
-                                                                              FlutterFlowTheme.of(context).secondaryText,
-                                                                          itemCount:
-                                                                              5,
-                                                                          itemSize:
-                                                                              16.0,
+                                                                        wrapWithModel(
+                                                                          model:
+                                                                              _model.primaryRatingBarModel2,
+                                                                          updateCallback: () =>
+                                                                              safeSetState(() {}),
+                                                                          child:
+                                                                              PrimaryRatingBarWidget(),
                                                                         ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(

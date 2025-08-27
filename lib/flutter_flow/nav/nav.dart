@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -33,22 +35,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => ListaViagensWidget(),
+      errorBuilder: (context, state) => ListaViagensPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => ListaViagensWidget(),
+          builder: (context, _) => ListaViagensPageWidget(),
         ),
         FFRoute(
-          name: ListaViagensWidget.routeName,
-          path: ListaViagensWidget.routePath,
-          builder: (context, params) => ListaViagensWidget(),
+          name: ListaViagensPageWidget.routeName,
+          path: ListaViagensPageWidget.routePath,
+          builder: (context, params) => ListaViagensPageWidget(),
         ),
         FFRoute(
-          name: DetalhesViagemWidget.routeName,
-          path: DetalhesViagemWidget.routePath,
-          builder: (context, params) => DetalhesViagemWidget(),
+          name: DetalhesViagemPageWidget.routeName,
+          path: DetalhesViagemPageWidget.routePath,
+          builder: (context, params) => DetalhesViagemPageWidget(),
+        ),
+        FFRoute(
+          name: NovaViagemWizardPageWidget.routeName,
+          path: NovaViagemWizardPageWidget.routePath,
+          builder: (context, params) => NovaViagemWizardPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -121,6 +128,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -139,6 +147,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
