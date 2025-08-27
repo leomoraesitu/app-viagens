@@ -230,7 +230,7 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
                     Align(
                       alignment: AlignmentDirectional(0.0, -1.0),
                       child: Image.network(
-                        'https://images.stockcake.com/public/b/c/6/bc6b1304-89c7-4fba-b030-de61f3bc5406_large/vibrant-vegas-night-stockcake.jpg',
+                        'https://cms.inspirato.com/ImageGen.ashx?image=%2Fmedia%2F9464094%2Fgettyimages-535829219.jpg&width=1081.5',
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).height * 0.5,
                         fit: BoxFit.cover,

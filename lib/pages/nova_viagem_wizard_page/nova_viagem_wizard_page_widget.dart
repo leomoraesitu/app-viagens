@@ -116,11 +116,15 @@ class _NovaViagemWizardPageWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  wrapWithModel(
-                                    model: _model.primaryTextFieldNomeModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PrimaryTextFieldWidget(
-                                      label: 'Nome',
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 0.0),
+                                    child: wrapWithModel(
+                                      model: _model.primaryTextFieldNomeModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PrimaryTextFieldWidget(
+                                        label: 'Nome',
+                                      ),
                                     ),
                                   ),
                                   wrapWithModel(
@@ -286,12 +290,15 @@ class _NovaViagemWizardPageWidgetState
                     ),
                   ),
                 ),
-                wrapWithModel(
-                  model: _model.primaryButtonModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: PrimaryButtonWidget(
-                    label: 'Criar viagem',
-                    variant: ButtonVariant.primary,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                  child: wrapWithModel(
+                    model: _model.primaryButtonModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: PrimaryButtonWidget(
+                      label: 'Criar viagem',
+                      variant: ButtonVariant.primary,
+                    ),
                   ),
                 ),
               ],

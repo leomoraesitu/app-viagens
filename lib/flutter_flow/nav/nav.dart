@@ -56,6 +56,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: NovaViagemWizardPageWidget.routeName,
           path: NovaViagemWizardPageWidget.routePath,
           builder: (context, params) => NovaViagemWizardPageWidget(),
+        ),
+        FFRoute(
+          name: EditarViagemWizardPageWidget.routeName,
+          path: EditarViagemWizardPageWidget.routePath,
+          builder: (context, params) => EditarViagemWizardPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
