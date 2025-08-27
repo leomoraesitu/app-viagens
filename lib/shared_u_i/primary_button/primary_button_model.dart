@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'lista_viagens_widget.dart' show ListaViagensWidget;
+import 'primary_button_widget.dart' show PrimaryButtonWidget;
 import 'package:flutter/material.dart';
 
-class ListaViagensModel extends FlutterFlowModel<ListaViagensWidget> {
+class PrimaryButtonModel extends FlutterFlowModel<PrimaryButtonWidget> {
   @override
   void initState(BuildContext context) {}
 
