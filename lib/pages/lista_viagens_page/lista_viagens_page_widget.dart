@@ -379,7 +379,13 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
                                             ),
                                             child: StreamBuilder<
                                                 List<ViagensRecord>>(
-                                              stream: queryViagensRecord(),
+                                              stream: queryViagensRecord(
+                                                queryBuilder: (viagensRecord) =>
+                                                    viagensRecord.where(
+                                                  'visitado',
+                                                  isEqualTo: false,
+                                                ),
+                                              ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -739,7 +745,13 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
                                                     0.0, 0.0, 0.0, 24.0),
                                             child: StreamBuilder<
                                                 List<ViagensRecord>>(
-                                              stream: queryViagensRecord(),
+                                              stream: queryViagensRecord(
+                                                queryBuilder: (viagensRecord) =>
+                                                    viagensRecord.where(
+                                                  'visitado',
+                                                  isEqualTo: true,
+                                                ),
+                                              ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -785,214 +797,232 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
                                                                   8.0,
                                                                   16.0,
                                                                   8.0),
-                                                      child: Container(
-                                                        width: 270.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              blurRadius: 8.0,
-                                                              color: Color(
-                                                                  0x230F1113),
-                                                              offset: Offset(
-                                                                0.0,
-                                                                4.0,
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                            DetalhesViagemPageWidget
+                                                                .routeName,
+                                                            queryParameters: {
+                                                              'viagemRef':
+                                                                  serializeParam(
+                                                                listViewVerticalViagensRecord
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference,
                                                               ),
-                                                            )
-                                                          ],
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
-                                                          border: Border.all(
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 270.0,
+                                                          decoration:
+                                                              BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryBackground,
-                                                            width: 1.0,
-                                                          ),
-                                                        ),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Hero(
-                                                              tag:
-                                                                  listViewVerticalViagensRecord
-                                                                      .imgUrl,
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          0.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          0.0),
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          12.0),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          12.0),
+                                                                .secondaryBackground,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                blurRadius: 8.0,
+                                                                color: Color(
+                                                                    0x230F1113),
+                                                                offset: Offset(
+                                                                  0.0,
+                                                                  4.0,
                                                                 ),
-                                                                child: Image
-                                                                    .network(
-                                                                  listViewVerticalViagensRecord
-                                                                      .imgUrl,
-                                                                  width: double
-                                                                      .infinity,
-                                                                  height: 200.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
+                                                              )
+                                                            ],
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryBackground,
+                                                              width: 1.0,
+                                                            ),
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Hero(
+                                                                tag:
+                                                                    listViewVerticalViagensRecord
+                                                                        .imgUrl,
+                                                                transitionOnUserGestures:
+                                                                    true,
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            12.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            12.0),
+                                                                  ),
+                                                                  child: Image
+                                                                      .network(
+                                                                    listViewVerticalViagensRecord
+                                                                        .imgUrl,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height:
+                                                                        200.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          12.0,
-                                                                          16.0,
-                                                                          12.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Text(
-                                                                          listViewVerticalViagensRecord
-                                                                              .nome,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyLarge
-                                                                              .override(
-                                                                                font: GoogleFonts.inter(
+                                                              Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        12.0,
+                                                                        16.0,
+                                                                        12.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            listViewVerticalViagensRecord.nome,
+                                                                            style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                  font: GoogleFonts.inter(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                  ),
+                                                                                  letterSpacing: 0.0,
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                 ),
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                              ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              8.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              wrapWithModel(
-                                                                                model: _model.primaryRatingBarModels2.getModel(
-                                                                                  listViewVerticalViagensRecord.reference.id,
-                                                                                  listViewVerticalIndex,
-                                                                                ),
-                                                                                updateCallback: () => safeSetState(() {}),
-                                                                                child: PrimaryRatingBarWidget(
-                                                                                  key: Key(
-                                                                                    'Keyurp_${listViewVerticalViagensRecord.reference.id}',
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                8.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                wrapWithModel(
+                                                                                  model: _model.primaryRatingBarModels2.getModel(
+                                                                                    listViewVerticalViagensRecord.reference.id,
+                                                                                    listViewVerticalIndex,
                                                                                   ),
-                                                                                  rating: listViewVerticalViagensRecord.vontade,
+                                                                                  updateCallback: () => safeSetState(() {}),
+                                                                                  child: PrimaryRatingBarWidget(
+                                                                                    key: Key(
+                                                                                      'Keyurp_${listViewVerticalViagensRecord.reference.id}',
+                                                                                    ),
+                                                                                    rating: listViewVerticalViagensRecord.vontade,
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                                                                child: Text(
-                                                                                  listViewVerticalViagensRecord.vontade.toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodySmall.override(
-                                                                                        font: GoogleFonts.inter(
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                                                                                  child: Text(
+                                                                                    listViewVerticalViagensRecord.vontade.toString(),
+                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                          font: GoogleFonts.inter(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
                                                                                           fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
                                                                                           fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
                                                                                         ),
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                                                                                      ),
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                            ],
+                                                                              ],
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                  Container(
-                                                                    height:
-                                                                        32.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12.0),
-                                                                    ),
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          8.0,
-                                                                          0.0,
-                                                                          8.0,
-                                                                          0.0),
+                                                                    Container(
+                                                                      height:
+                                                                          32.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(12.0),
+                                                                      ),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
                                                                       child:
-                                                                          Text(
-                                                                        formatNumber(
-                                                                          listViewVerticalViagensRecord
-                                                                              .investimento,
-                                                                          formatType:
-                                                                              FormatType.decimal,
-                                                                          decimalType:
-                                                                              DecimalType.commaDecimal,
-                                                                          currency:
-                                                                              'R\$',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.inter(
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          formatNumber(
+                                                                            listViewVerticalViagensRecord.investimento,
+                                                                            formatType:
+                                                                                FormatType.decimal,
+                                                                            decimalType:
+                                                                                DecimalType.commaDecimal,
+                                                                            currency:
+                                                                                'R\$',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.inter(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                letterSpacing: 0.0,
                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
-                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     );
