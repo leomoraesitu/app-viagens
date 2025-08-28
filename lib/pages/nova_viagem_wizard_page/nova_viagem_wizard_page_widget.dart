@@ -319,6 +319,7 @@ class _NovaViagemWizardPageWidgetState
                               .textFieldTextController
                               .text),
                           investimento: _model.countControllerInvestimentoValue,
+                          visitado: false,
                         ));
                         _model.firebaseResponse =
                             ViagensRecord.getDocumentFromData(
@@ -337,6 +338,7 @@ class _NovaViagemWizardPageWidgetState
                                       .text),
                                   investimento:
                                       _model.countControllerInvestimentoValue,
+                                  visitado: false,
                                 ),
                                 viagensRecordReference);
                         if ((_model.firebaseResponse != null) == true) {

@@ -136,25 +136,174 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                     detalhesViagemPageViagensRecord.imgUrl,
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(1.0, -1.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 16.0, 16.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderRadius: 8.0,
-                                  buttonSize: 40.0,
-                                  fillColor: Color(0x5014181B),
-                                  icon: Icon(
-                                    Icons.favorite_border,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 24.0,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                if (detalhesViagemPageViagensRecord.visitado ==
+                                    false)
+                                  Align(
+                                    alignment: AlignmentDirectional(1.0, -1.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 16.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderRadius: 8.0,
+                                        buttonSize: 40.0,
+                                        fillColor: Color(0x8C14181B),
+                                        icon: Icon(
+                                          Icons.brightness_1_outlined,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Viagem realizada'),
+                                                        content: Text(
+                                                            'Você já visitou esse lugar?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child: Text('Não'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text('Sim'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            await widget.viagemRef!
+                                                .update(createViagensRecordData(
+                                              visitado: true,
+                                            ));
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('SUCESSO!'),
+                                                  content: Text(
+                                                      'Viagem movida para a lista \"Visitados\"'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+
+                                            context.pushNamed(
+                                                ListaViagensPageWidget
+                                                    .routeName);
+                                          } else {
+                                            return;
+                                          }
+                                        },
+                                      ),
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
-                              ),
+                                if (detalhesViagemPageViagensRecord.visitado ==
+                                    true)
+                                  Align(
+                                    alignment: AlignmentDirectional(1.0, -1.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 16.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderRadius: 8.0,
+                                        buttonSize: 40.0,
+                                        fillColor: Color(0x8C14181B),
+                                        icon: Icon(
+                                          Icons.check_circle,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text('ATENÇÃO!'),
+                                                        content: Text(
+                                                            'Você quer mover essa viagem para a lista de não visitados?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child: Text('Não'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text('Sim'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            await widget.viagemRef!
+                                                .update(createViagensRecordData(
+                                              visitado: false,
+                                            ));
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('SUCESSO!'),
+                                                  content: Text(
+                                                      'Viagem movida para a lista \"Não visitados\"'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+
+                                            context.pushNamed(
+                                                ListaViagensPageWidget
+                                                    .routeName);
+                                          } else {
+                                            return;
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ],
                         ),

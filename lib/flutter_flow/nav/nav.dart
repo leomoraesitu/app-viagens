@@ -51,6 +51,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : ListaViagensPageWidget(),
         ),
         FFRoute(
+          name: DetalhesViagemPageWidget.routeName,
+          path: DetalhesViagemPageWidget.routePath,
+          builder: (context, params) => DetalhesViagemPageWidget(
+            viagemRef: params.getParam(
+              'viagemRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['viagens'],
+            ),
+          ),
+        ),
+        FFRoute(
           name: NovaViagemWizardPageWidget.routeName,
           path: NovaViagemWizardPageWidget.routePath,
           builder: (context, params) => params.isEmpty
@@ -61,18 +73,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: EditarViagemWizardPageWidget.routeName,
           path: EditarViagemWizardPageWidget.routePath,
           builder: (context, params) => EditarViagemWizardPageWidget(
-            viagemRef: params.getParam(
-              'viagemRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['viagens'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: DetalhesViagemPageWidget.routeName,
-          path: DetalhesViagemPageWidget.routePath,
-          builder: (context, params) => DetalhesViagemPageWidget(
             viagemRef: params.getParam(
               'viagemRef',
               ParamType.DocumentReference,
