@@ -6,7 +6,12 @@ import 'primary_rating_bar_model.dart';
 export 'primary_rating_bar_model.dart';
 
 class PrimaryRatingBarWidget extends StatefulWidget {
-  const PrimaryRatingBarWidget({super.key});
+  const PrimaryRatingBarWidget({
+    super.key,
+    required this.rating,
+  });
+
+  final int? rating;
 
   @override
   State<PrimaryRatingBarWidget> createState() => _PrimaryRatingBarWidgetState();
@@ -42,7 +47,7 @@ class _PrimaryRatingBarWidgetState extends State<PrimaryRatingBarWidget> {
         color: FlutterFlowTheme.of(context).warning,
       ),
       direction: Axis.horizontal,
-      rating: 4.0,
+      rating: widget.rating!.toDouble(),
       unratedColor: FlutterFlowTheme.of(context).secondaryText,
       itemCount: 5,
       itemSize: 16.0,
