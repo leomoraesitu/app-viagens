@@ -12,10 +12,12 @@ class PrimaryButtonWidget extends StatefulWidget {
     super.key,
     required this.label,
     required this.variant,
+    this.callback,
   });
 
   final String? label;
   final ButtonVariant? variant;
+  final Future Function()? callback;
 
   @override
   State<PrimaryButtonWidget> createState() => _PrimaryButtonWidgetState();
@@ -53,8 +55,8 @@ class _PrimaryButtonWidgetState extends State<PrimaryButtonWidget> {
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: FFButtonWidget(
-          onPressed: () {
-            print('Button pressed ...');
+          onPressed: () async {
+            await widget.callback?.call();
           },
           text: widget.label!,
           options: FFButtonOptions(

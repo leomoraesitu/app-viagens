@@ -101,7 +101,7 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                           FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
                     color: FlutterFlowTheme.of(context).primaryBackground,
-                    fontSize: 28.0,
+                    fontSize: 26.0,
                     letterSpacing: 0.0,
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
@@ -133,7 +133,6 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                               child: PrimaryImageWidget(
                                 imageUrl:
                                     detalhesViagemPageViagensRecord.imgUrl,
-                                imageWidth: 360,
                               ),
                             ),
                             Align(
@@ -328,6 +327,7 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                   child: PrimaryButtonWidget(
                     label: 'Editar',
                     variant: ButtonVariant.primary,
+                    callback: () async {},
                   ),
                 ),
               ),

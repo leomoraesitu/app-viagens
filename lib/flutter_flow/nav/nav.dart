@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -35,17 +36,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => ListaViagensPageWidget(),
+      errorBuilder: (context, state) => NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => ListaViagensPageWidget(),
-        ),
-        FFRoute(
-          name: NovaViagemWizardPageWidget.routeName,
-          path: NovaViagemWizardPageWidget.routePath,
-          builder: (context, params) => NovaViagemWizardPageWidget(),
+          builder: (context, _) => NavBarPage(),
         ),
         FFRoute(
           name: EditarViagemWizardPageWidget.routeName,
@@ -55,7 +51,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ListaViagensPageWidget.routeName,
           path: ListaViagensPageWidget.routePath,
-          builder: (context, params) => ListaViagensPageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ListaViagensPage')
+              : ListaViagensPageWidget(),
         ),
         FFRoute(
           name: DetalhesViagemPageWidget.routeName,
@@ -68,6 +66,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['viagens'],
             ),
           ),
+        ),
+        FFRoute(
+          name: NovaViagemWizardPageWidget.routeName,
+          path: NovaViagemWizardPageWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'NovaViagemWizardPage')
+              : NovaViagemWizardPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

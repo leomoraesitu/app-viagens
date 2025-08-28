@@ -78,6 +78,7 @@ class _EditarViagemWizardPageWidgetState
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: FlutterFlowTheme.of(context).primaryBackground,
+                  fontSize: 26.0,
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).headlineMedium.fontWeight,
@@ -317,6 +318,7 @@ class _EditarViagemWizardPageWidgetState
                   child: PrimaryButtonWidget(
                     label: 'Editar viagem',
                     variant: ButtonVariant.primary,
+                    callback: () async {},
                   ),
                 ),
                 Padding(
@@ -327,6 +329,7 @@ class _EditarViagemWizardPageWidgetState
                     child: PrimaryButtonWidget(
                       label: 'Deletar viagem',
                       variant: ButtonVariant.danger,
+                      callback: () async {},
                     ),
                   ),
                 ),
