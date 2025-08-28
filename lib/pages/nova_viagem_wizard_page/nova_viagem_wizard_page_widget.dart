@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -5,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/shared_u_i/primary_button/primary_button_widget.dart';
 import '/shared_u_i/primary_text_field/primary_text_field_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'nova_viagem_wizard_page_model.dart';
@@ -77,6 +79,7 @@ class _NovaViagemWizardPageWidgetState
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: FlutterFlowTheme.of(context).primaryBackground,
+                  fontSize: 26.0,
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).headlineMedium.fontWeight,
@@ -120,10 +123,10 @@ class _NovaViagemWizardPageWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 0.0),
                                     child: wrapWithModel(
-                                      model: _model.primaryTextFieldNomeModel,
+                                      model: _model.primaryTextFieldLocalModel,
                                       updateCallback: () => safeSetState(() {}),
                                       child: PrimaryTextFieldWidget(
-                                        label: 'Nome',
+                                        label: 'Local',
                                       ),
                                     ),
                                   ),
@@ -142,6 +145,7 @@ class _NovaViagemWizardPageWidgetState
                                     updateCallback: () => safeSetState(() {}),
                                     child: PrimaryTextFieldWidget(
                                       label: 'Cole a URL da foto aqui',
+                                      maxLines: 1,
                                     ),
                                   ),
                                   wrapWithModel(
@@ -265,10 +269,11 @@ class _NovaViagemWizardPageWidgetState
                                                       ),
                                             ),
                                             count: _model
-                                                .countControllerValue ??= 100,
+                                                    .countControllerInvestimentoValue ??=
+                                                100,
                                             updateCount: (count) =>
                                                 safeSetState(() => _model
-                                                        .countControllerValue =
+                                                        .countControllerInvestimentoValue =
                                                     count),
                                             stepSize: 100,
                                             contentPadding:
@@ -298,6 +303,85 @@ class _NovaViagemWizardPageWidgetState
                     child: PrimaryButtonWidget(
                       label: 'Criar viagem',
                       variant: ButtonVariant.primary,
+                      callback: () async {
+                        var viagensRecordReference =
+                            ViagensRecord.collection.doc();
+                        await viagensRecordReference
+                            .set(createViagensRecordData(
+                          nome: _model.primaryTextFieldLocalModel
+                              .textFieldTextController.text,
+                          descricao: _model.primaryTextFieldDescricaoModel
+                              .textFieldTextController.text,
+                          imgUrl: _model.primaryTextFieldImgUrlModel
+                              .textFieldTextController.text,
+                          vontade: int.tryParse(_model
+                              .primaryTextFieldVontadeModel
+                              .textFieldTextController
+                              .text),
+                          investimento: _model.countControllerInvestimentoValue
+                              ?.toDouble(),
+                        ));
+                        _model.firebaseResponse =
+                            ViagensRecord.getDocumentFromData(
+                                createViagensRecordData(
+                                  nome: _model.primaryTextFieldLocalModel
+                                      .textFieldTextController.text,
+                                  descricao: _model
+                                      .primaryTextFieldDescricaoModel
+                                      .textFieldTextController
+                                      .text,
+                                  imgUrl: _model.primaryTextFieldImgUrlModel
+                                      .textFieldTextController.text,
+                                  vontade: int.tryParse(_model
+                                      .primaryTextFieldVontadeModel
+                                      .textFieldTextController
+                                      .text),
+                                  investimento: _model
+                                      .countControllerInvestimentoValue
+                                      ?.toDouble(),
+                                ),
+                                viagensRecordReference);
+                        if ((_model.firebaseResponse != null) == true) {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('SUCESSO!'),
+                                content: Text('Viagem adicionada!'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Voltar para Home'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+
+                          context.pushNamed(ListaViagensPageWidget.routeName);
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('ERRO'),
+                                content:
+                                    Text('Erro desconhecido ao criar viagem'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+
+                        safeSetState(() {});
+                      },
                     ),
                   ),
                 ),
