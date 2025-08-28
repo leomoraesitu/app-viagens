@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/shared_u_i/primary_button/primary_button_widget.dart';
 import '/shared_u_i/primary_image/primary_image_widget.dart';
 import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'detalhes_viagem_page_model.dart';
@@ -87,7 +88,7 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
-                context.pop();
+                context.pushNamed(ListaViagensPageWidget.routeName);
               },
             ),
             title: Text(
@@ -327,7 +328,17 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                   child: PrimaryButtonWidget(
                     label: 'Editar',
                     variant: ButtonVariant.primary,
-                    callback: () async {},
+                    callback: () async {
+                      context.pushNamed(
+                        EditarViagemWizardPageWidget.routeName,
+                        queryParameters: {
+                          'viagemRef': serializeParam(
+                            detalhesViagemPageViagensRecord.reference,
+                            ParamType.DocumentReference,
+                          ),
+                        }.withoutNulls,
+                      );
+                    },
                   ),
                 ),
               ),

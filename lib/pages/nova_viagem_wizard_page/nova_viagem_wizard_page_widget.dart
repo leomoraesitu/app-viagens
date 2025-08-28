@@ -318,8 +318,7 @@ class _NovaViagemWizardPageWidgetState
                               .primaryTextFieldVontadeModel
                               .textFieldTextController
                               .text),
-                          investimento: _model.countControllerInvestimentoValue
-                              ?.toDouble(),
+                          investimento: _model.countControllerInvestimentoValue,
                         ));
                         _model.firebaseResponse =
                             ViagensRecord.getDocumentFromData(
@@ -336,9 +335,8 @@ class _NovaViagemWizardPageWidgetState
                                       .primaryTextFieldVontadeModel
                                       .textFieldTextController
                                       .text),
-                                  investimento: _model
-                                      .countControllerInvestimentoValue
-                                      ?.toDouble(),
+                                  investimento:
+                                      _model.countControllerInvestimentoValue,
                                 ),
                                 viagensRecordReference);
                         if ((_model.firebaseResponse != null) == true) {
