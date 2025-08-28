@@ -43,11 +43,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => ListaViagensPageWidget(),
         ),
         FFRoute(
-          name: DetalhesViagemPageWidget.routeName,
-          path: DetalhesViagemPageWidget.routePath,
-          builder: (context, params) => DetalhesViagemPageWidget(),
-        ),
-        FFRoute(
           name: NovaViagemWizardPageWidget.routeName,
           path: NovaViagemWizardPageWidget.routePath,
           builder: (context, params) => NovaViagemWizardPageWidget(),
@@ -61,6 +56,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ListaViagensPageWidget.routeName,
           path: ListaViagensPageWidget.routePath,
           builder: (context, params) => ListaViagensPageWidget(),
+        ),
+        FFRoute(
+          name: DetalhesViagemPageWidget.routeName,
+          path: DetalhesViagemPageWidget.routePath,
+          builder: (context, params) => DetalhesViagemPageWidget(
+            viagemRef: params.getParam(
+              'viagemRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['viagens'],
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
