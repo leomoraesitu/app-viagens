@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/shared_u_i/primary_button/primary_button_widget.dart';
 import '/shared_u_i/primary_image/primary_image_widget.dart';
 import '/shared_u_i/primary_text_field/primary_text_field_widget.dart';
+import '/index.dart';
 import 'editar_viagem_wizard_page_widget.dart'
     show EditarViagemWizardPageWidget;
 import 'package:flutter/material.dart';

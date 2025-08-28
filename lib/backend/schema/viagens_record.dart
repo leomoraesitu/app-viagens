@@ -35,23 +35,23 @@ class ViagensRecord extends FirestoreRecord {
   int get vontade => _vontade ?? 0;
   bool hasVontade() => _vontade != null;
 
-  // "investimento" field.
-  double? _investimento;
-  double get investimento => _investimento ?? 0.0;
-  bool hasInvestimento() => _investimento != null;
-
   // "visitado" field.
   bool? _visitado;
   bool get visitado => _visitado ?? false;
   bool hasVisitado() => _visitado != null;
+
+  // "investimento" field.
+  int? _investimento;
+  int get investimento => _investimento ?? 0;
+  bool hasInvestimento() => _investimento != null;
 
   void _initializeFields() {
     _nome = snapshotData['nome'] as String?;
     _descricao = snapshotData['descricao'] as String?;
     _imgUrl = snapshotData['imgUrl'] as String?;
     _vontade = castToType<int>(snapshotData['vontade']);
-    _investimento = castToType<double>(snapshotData['investimento']);
     _visitado = snapshotData['visitado'] as bool?;
+    _investimento = castToType<int>(snapshotData['investimento']);
   }
 
   static CollectionReference get collection =>
@@ -93,8 +93,8 @@ Map<String, dynamic> createViagensRecordData({
   String? descricao,
   String? imgUrl,
   int? vontade,
-  double? investimento,
   bool? visitado,
+  int? investimento,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -102,8 +102,8 @@ Map<String, dynamic> createViagensRecordData({
       'descricao': descricao,
       'imgUrl': imgUrl,
       'vontade': vontade,
-      'investimento': investimento,
       'visitado': visitado,
+      'investimento': investimento,
     }.withoutNulls,
   );
 
@@ -119,8 +119,8 @@ class ViagensRecordDocumentEquality implements Equality<ViagensRecord> {
         e1?.descricao == e2?.descricao &&
         e1?.imgUrl == e2?.imgUrl &&
         e1?.vontade == e2?.vontade &&
-        e1?.investimento == e2?.investimento &&
-        e1?.visitado == e2?.visitado;
+        e1?.visitado == e2?.visitado &&
+        e1?.investimento == e2?.investimento;
   }
 
   @override
@@ -129,8 +129,8 @@ class ViagensRecordDocumentEquality implements Equality<ViagensRecord> {
         e?.descricao,
         e?.imgUrl,
         e?.vontade,
-        e?.investimento,
-        e?.visitado
+        e?.visitado,
+        e?.investimento
       ]);
 
   @override

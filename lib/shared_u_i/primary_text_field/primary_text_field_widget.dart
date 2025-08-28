@@ -12,11 +12,13 @@ class PrimaryTextFieldWidget extends StatefulWidget {
     this.label,
     this.minLines,
     this.maxLines,
+    this.initialValue,
   });
 
   final String? label;
   final int? minLines;
   final int? maxLines;
+  final String? initialValue;
 
   @override
   State<PrimaryTextFieldWidget> createState() => _PrimaryTextFieldWidgetState();
@@ -36,7 +38,8 @@ class _PrimaryTextFieldWidgetState extends State<PrimaryTextFieldWidget> {
     super.initState();
     _model = createModel(context, () => PrimaryTextFieldModel());
 
-    _model.textFieldTextController ??= TextEditingController();
+    _model.textFieldTextController ??=
+        TextEditingController(text: widget.initialValue);
     _model.textFieldFocusNode ??= FocusNode();
     _model.textFieldFocusNode!.addListener(() => safeSetState(() {}));
   }
@@ -54,7 +57,7 @@ class _PrimaryTextFieldWidgetState extends State<PrimaryTextFieldWidget> {
       controller: _model.textFieldTextController,
       focusNode: _model.textFieldFocusNode,
       autofocus: true,
-      textCapitalization: TextCapitalization.words,
+      textCapitalization: TextCapitalization.none,
       obscureText: false,
       decoration: InputDecoration(
         labelText: widget.label,
@@ -141,7 +144,7 @@ class _PrimaryTextFieldWidgetState extends State<PrimaryTextFieldWidget> {
           TextInputFormatter.withFunction((oldValue, newValue) {
             return TextEditingValue(
               selection: newValue.selection,
-              text: newValue.text.toCapitalization(TextCapitalization.words),
+              text: newValue.text.toCapitalization(TextCapitalization.none),
             );
           }),
       ],
