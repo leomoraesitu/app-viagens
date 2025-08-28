@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/shared_u_i/primary_button/primary_button_widget.dart';
 import '/shared_u_i/primary_image/primary_image_widget.dart';
 import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
+import '/index.dart';
 import 'detalhes_viagem_page_widget.dart' show DetalhesViagemPageWidget;
 import 'package:flutter/material.dart';
 
