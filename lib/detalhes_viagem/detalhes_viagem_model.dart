@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'lista_viagens_page_widget.dart' show ListaViagensPageWidget;
+import 'detalhes_viagem_widget.dart' show DetalhesViagemWidget;
 import 'package:flutter/material.dart';
 
-class ListaViagensPageModel extends FlutterFlowModel<ListaViagensPageWidget> {
+class DetalhesViagemModel extends FlutterFlowModel<DetalhesViagemWidget> {
   @override
   void initState(BuildContext context) {}
 
