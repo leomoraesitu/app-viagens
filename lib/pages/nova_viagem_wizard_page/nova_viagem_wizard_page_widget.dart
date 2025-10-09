@@ -33,6 +33,8 @@ class _NovaViagemWizardPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NovaViagemWizardPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

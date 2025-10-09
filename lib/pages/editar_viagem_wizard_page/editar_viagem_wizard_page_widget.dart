@@ -39,6 +39,8 @@ class _EditarViagemWizardPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => EditarViagemWizardPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

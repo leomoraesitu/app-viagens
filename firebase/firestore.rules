@@ -4,8 +4,27 @@ service cloud.firestore {
     match /viagens/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if false;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
+
+    match /assets/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /assets/{parent}/backgrounds/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
+    match /{path=**}/backgrounds/{document} {
+      allow read: if true;
+    }
+
   }
 }
