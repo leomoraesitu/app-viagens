@@ -11,6 +11,8 @@ class NovaViagemWizardPageModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // State field(s) for scrolling_Column widget.
+  ScrollController? scrollingColumnScrollController;
   // Model for PrimaryTextFieldLocal.
   late PrimaryTextFieldModel primaryTextFieldLocalModel;
   // Model for PrimaryTextFieldDescricao.
@@ -28,6 +30,7 @@ class NovaViagemWizardPageModel
 
   @override
   void initState(BuildContext context) {
+    scrollingColumnScrollController = ScrollController();
     primaryTextFieldLocalModel =
         createModel(context, () => PrimaryTextFieldModel());
     primaryTextFieldDescricaoModel =
@@ -41,6 +44,7 @@ class NovaViagemWizardPageModel
 
   @override
   void dispose() {
+    scrollingColumnScrollController?.dispose();
     primaryTextFieldLocalModel.dispose();
     primaryTextFieldDescricaoModel.dispose();
     primaryTextFieldImgUrlModel.dispose();

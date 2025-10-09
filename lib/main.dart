@@ -82,10 +82,18 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(false),
+          interactive: true,
+        ),
         useMaterial3: false,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(false),
+          interactive: true,
+        ),
         useMaterial3: false,
       ),
       themeMode: _themeMode,
@@ -112,7 +120,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'NovaViagemWizardPage';
+  String _currentPageName = 'ListaViagensPage';
   late Widget? _currentPage;
 
   @override
@@ -125,8 +133,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'NovaViagemWizardPage': NovaViagemWizardPageWidget(),
       'ListaViagensPage': ListaViagensPageWidget(),
+      'NovaViagemWizardPage': NovaViagemWizardPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -148,18 +156,18 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.add_circle,
-              size: 24.0,
-            ),
-            label: 'Nova viagem',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.home,
               size: 24.0,
             ),
             label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_circle,
+              size: 24.0,
+            ),
+            label: 'Nova viagem',
             tooltip: '',
           )
         ],

@@ -10,6 +10,8 @@ class DetalhesViagemPageModel
     extends FlutterFlowModel<DetalhesViagemPageWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for Column widget.
+  ScrollController? columnController;
   // Model for PrimaryImage component.
   late PrimaryImageModel primaryImageModel;
   // Model for PrimaryRatingBar component.
@@ -19,6 +21,7 @@ class DetalhesViagemPageModel
 
   @override
   void initState(BuildContext context) {
+    columnController = ScrollController();
     primaryImageModel = createModel(context, () => PrimaryImageModel());
     primaryRatingBarModel = createModel(context, () => PrimaryRatingBarModel());
     primaryButtonModel = createModel(context, () => PrimaryButtonModel());
@@ -26,6 +29,7 @@ class DetalhesViagemPageModel
 
   @override
   void dispose() {
+    columnController?.dispose();
     primaryImageModel.dispose();
     primaryRatingBarModel.dispose();
     primaryButtonModel.dispose();
