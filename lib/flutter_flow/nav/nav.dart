@@ -44,16 +44,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => NavBarPage(),
         ),
         FFRoute(
-          name: ListaViagensPageWidget.routeName,
-          path: ListaViagensPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListaViagensPage')
-              : ListaViagensPageWidget(),
-        ),
-        FFRoute(
-          name: DetalhesViagemPageWidget.routeName,
-          path: DetalhesViagemPageWidget.routePath,
-          builder: (context, params) => DetalhesViagemPageWidget(
+          name: EditarViagemWizardPageWidget.routeName,
+          path: EditarViagemWizardPageWidget.routePath,
+          builder: (context, params) => EditarViagemWizardPageWidget(
             viagemRef: params.getParam(
               'viagemRef',
               ParamType.DocumentReference,
@@ -70,9 +63,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : NovaViagemWizardPageWidget(),
         ),
         FFRoute(
-          name: EditarViagemWizardPageWidget.routeName,
-          path: EditarViagemWizardPageWidget.routePath,
-          builder: (context, params) => EditarViagemWizardPageWidget(
+          name: DetalhesViagemPageWidget.routeName,
+          path: DetalhesViagemPageWidget.routePath,
+          builder: (context, params) => DetalhesViagemPageWidget(
             viagemRef: params.getParam(
               'viagemRef',
               ParamType.DocumentReference,
@@ -80,6 +73,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['viagens'],
             ),
           ),
+        ),
+        FFRoute(
+          name: ListaViagensPageWidget.routeName,
+          path: ListaViagensPageWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ListaViagensPage')
+              : ListaViagensPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

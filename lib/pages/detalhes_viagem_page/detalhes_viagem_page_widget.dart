@@ -37,6 +37,8 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DetalhesViagemPageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -136,17 +138,19 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                     detalhesViagemPageViagensRecord.imgUrl,
                               ),
                             ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                if (detalhesViagemPageViagensRecord.visitado ==
-                                    false)
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, -1.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 16.0, 16.0, 0.0),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 16.0, 32.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  if (detalhesViagemPageViagensRecord
+                                          .visitado ==
+                                      false)
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(1.0, -1.0),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 8.0,
                                         buttonSize: 40.0,
@@ -221,14 +225,12 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                         },
                                       ),
                                     ),
-                                  ),
-                                if (detalhesViagemPageViagensRecord.visitado ==
-                                    true)
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, -1.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 16.0, 16.0, 0.0),
+                                  if (detalhesViagemPageViagensRecord
+                                          .visitado ==
+                                      true)
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(1.0, -1.0),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 8.0,
                                         buttonSize: 40.0,
@@ -302,8 +304,8 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                         },
                                       ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),

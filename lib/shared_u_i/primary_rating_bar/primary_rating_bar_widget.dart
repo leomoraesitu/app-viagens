@@ -30,6 +30,8 @@ class _PrimaryRatingBarWidgetState extends State<PrimaryRatingBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PrimaryRatingBarModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
