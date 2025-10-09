@@ -12,6 +12,8 @@ class EditarViagemWizardPageModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // State field(s) for scrolling_Column widget.
+  ScrollController? scrollingColumnScrollController;
   // Model for PrimaryImage component.
   late PrimaryImageModel primaryImageModel;
   // Model for PrimaryTextFieldDescricao.
@@ -27,6 +29,7 @@ class EditarViagemWizardPageModel
 
   @override
   void initState(BuildContext context) {
+    scrollingColumnScrollController = ScrollController();
     primaryImageModel = createModel(context, () => PrimaryImageModel());
     primaryTextFieldDescricaoModel =
         createModel(context, () => PrimaryTextFieldModel());
@@ -39,6 +42,7 @@ class EditarViagemWizardPageModel
 
   @override
   void dispose() {
+    scrollingColumnScrollController?.dispose();
     primaryImageModel.dispose();
     primaryTextFieldDescricaoModel.dispose();
     primaryTextFieldVontadeModel.dispose();

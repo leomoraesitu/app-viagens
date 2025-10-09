@@ -46,18 +46,15 @@ class _PrimaryImageWidgetState extends State<PrimaryImageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16.0),
-        child: CachedNetworkImage(
-          fadeInDuration: Duration(milliseconds: 500),
-          fadeOutDuration: Duration(milliseconds: 500),
-          imageUrl: widget.imageUrl!,
-          width: widget.imageWidth?.toDouble(),
-          height: widget.imageHeight.toDouble(),
-          fit: BoxFit.cover,
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16.0),
+      child: CachedNetworkImage(
+        fadeInDuration: Duration(milliseconds: 500),
+        fadeOutDuration: Duration(milliseconds: 500),
+        imageUrl: widget.imageUrl!,
+        width: widget.imageWidth?.toDouble(),
+        height: widget.imageHeight.toDouble(),
+        fit: BoxFit.cover,
       ),
     );
   }
