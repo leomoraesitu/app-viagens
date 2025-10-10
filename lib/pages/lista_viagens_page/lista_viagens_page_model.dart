@@ -1,5 +1,4 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/shared_u_i/primary_image/primary_image_widget.dart';
 import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
 import '/index.dart';
 import 'lista_viagens_page_widget.dart' show ListaViagensPageWidget;
@@ -14,8 +13,6 @@ class ListaViagensPageModel extends FlutterFlowModel<ListaViagensPageWidget> {
   ScrollController? columnController2;
   // Models for PrimaryRatingBar dynamic component.
   late FlutterFlowDynamicModels<PrimaryRatingBarModel> primaryRatingBarModels1;
-  // Models for PrimaryImage dynamic component.
-  late FlutterFlowDynamicModels<PrimaryImageModel> primaryImageModels;
   // Models for PrimaryRatingBar dynamic component.
   late FlutterFlowDynamicModels<PrimaryRatingBarModel> primaryRatingBarModels2;
 
@@ -25,7 +22,6 @@ class ListaViagensPageModel extends FlutterFlowModel<ListaViagensPageWidget> {
     columnController2 = ScrollController();
     primaryRatingBarModels1 =
         FlutterFlowDynamicModels(() => PrimaryRatingBarModel());
-    primaryImageModels = FlutterFlowDynamicModels(() => PrimaryImageModel());
     primaryRatingBarModels2 =
         FlutterFlowDynamicModels(() => PrimaryRatingBarModel());
   }
@@ -35,7 +31,6 @@ class ListaViagensPageModel extends FlutterFlowModel<ListaViagensPageWidget> {
     columnController1?.dispose();
     columnController2?.dispose();
     primaryRatingBarModels1.dispose();
-    primaryImageModels.dispose();
     primaryRatingBarModels2.dispose();
   }
 }
