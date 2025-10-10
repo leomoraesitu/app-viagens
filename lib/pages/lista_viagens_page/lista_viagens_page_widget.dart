@@ -6,6 +6,7 @@ import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'lista_viagens_page_model.dart';
@@ -33,6 +34,14 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => ListaViagensPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setDarkModeSetting(
+        context,
+        false ? ThemeMode.dark : ThemeMode.light,
+      );
+    });
 
     animationsMap.addAll({
       'textOnPageLoadAnimation1': AnimationInfo(
