@@ -6,6 +6,10 @@
 
 > Aplicativo de viagens desenvolvido em **FlutterFlow + Firebase**.
 
+🌐 **Versão Web**: [https://appviagens2.web.app](https://app-viagens-leomoraes.flutterflow.app/)  
+📱 **Baixar APK:** [Release v1.0.0](https://github.com/leomoraesitu/AppViagens2/releases/tag/v1.0.0)  
+📄 **Histórico de versões:** [CHANGELOG.md](./CHANGELOG.md)
+
 ---
 
 ## 📖 Sobre o projeto
