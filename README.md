@@ -14,7 +14,7 @@
 
 ## 📖 Sobre o projeto
 O **App Viagens** foi desenvolvido durante o curso **Formação FlutterFlow** da [NoCode StartUp](https://nocodestartup.io/).  
-O objetivo é aplicar princípios de **engenharia de software**, **integração com Firebase** e **boas práticas de UI/UX** usando o framework Flutter.
+O objetivo é aplicar princípios de **engenharia de software**, **versionamento de código**, **integração com Firebase** e **boas práticas de UI/UX** usando o framework Flutter.
 
 O app permite:
 - **Criar, listar, visualizar detalhes e editar** destinos de viagem
