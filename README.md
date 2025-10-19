@@ -139,3 +139,7 @@ As versões são publicadas em **GitHub Releases**:
 🔗 [LinkedIn](https://www.linkedin.com/in/leomoraesitu)
 
 ---
+
+## 🏁 Licença
+Este projeto é de uso educacional e demonstrativo.  
+© 2025 Leonardo de Moraes Souza – Todos os direitos reservados.
