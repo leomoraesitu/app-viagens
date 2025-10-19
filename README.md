@@ -1,17 +1,17 @@
 # <img width="50" alt="logo" src="https://github.com/user-attachments/assets/58bdc581-b54c-477d-9de6-04fb0b50e7b7" />  App Viagens | FlutterFlow + Firebase  
 
-[![Release Version](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/leomoraesitu/AppViagens2/releases/tag/v1.0.0)
-[![Latest Release](https://img.shields.io/github/v/release/leomoraesitu/AppViagens2?include_prereleases)](https://github.com/leomoraesitu/AppViagens2/releases)
+[![Release Version](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0)
+[![Latest Release](https://img.shields.io/github/v/release/leomoraesitu/app-viagens?include_prereleases)](https://github.com/leomoraesitu/app-viagens/releases)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View%20history-orange)](./CHANGELOG.md)
-![GitHub last commit](https://img.shields.io/github/last-commit/leomoraesitu/AppViagens2)
-![GitHub repo size](https://img.shields.io/github/repo-size/leomoraesitu/AppViagens2)
-![GitHub language count](https://img.shields.io/github/languages/count/leomoraesitu/AppViagens2)
-![GitHub top language](https://img.shields.io/github/languages/top/leomoraesitu/AppViagens2)
+![GitHub last commit](https://img.shields.io/github/last-commit/leomoraesitu/app-viagens)
+![GitHub repo size](https://img.shields.io/github/repo-size/leomoraesitu/app-viagens)
+![GitHub language count](https://img.shields.io/github/languages/count/leomoraesitu/app-viagens)
+![GitHub top language](https://img.shields.io/github/languages/top/leomoraesitu/app-viagens)
 
 > Aplicativo de viagens desenvolvido em **FlutterFlow + Firebase**.
 
-🌐 **Versão Web**: [https://appviagens2.web.app](https://app-viagens-leomoraes.flutterflow.app/)  
-📱 **Baixar APK:** [Release v1.0.0](https://github.com/leomoraesitu/AppViagens2/releases/tag/v1.0.0)  
+🌐 **Versão Web**: [(https://app-viagens-leomoraes.flutterflow.app)](https://app-viagens-leomoraes.flutterflow.app/)  
+📱 **Baixar APK:** [Release v1.0.0](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0)  
 📄 **Histórico de versões:** [CHANGELOG.md](./CHANGELOG.md)
 
 ---
@@ -59,8 +59,8 @@ O app permite:
 ## ▶️ Como executar localmente
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/leomoraesitu/AppViagens2.git
-   cd AppViagens2
+   git clone https://github.com/leomoraesitu/app-viagens.git
+   cd app-viagens
     ````
 
 2. Abra no **FlutterFlow** ou no **VS Code / Android Studio**.
@@ -108,7 +108,7 @@ AppViagens2/
 ## 🗺️ Releases
 
 As versões são publicadas em **GitHub Releases**:
-[https://github.com/leomoraesitu/AppViagens2/releases](https://github.com/leomoraesitu/AppViagens2/releases)
+[https://github.com/leomoraesitu/app-viagens/releases](https://github.com/leomoraesitu/app-viagens/releases)
 
 ---
 
@@ -116,8 +116,8 @@ As versões são publicadas em **GitHub Releases**:
 
 | Versão | Data | Principais mudanças | Link |
 |:-------|:------:|:--------------------|:------|
-| **v1.1.0-planned** | — | 🔄 Em desenvolvimento: autenticação por e-mail/senha, tela de perfil, upload de PDF e integração com Google Maps. | [Ver Release](https://github.com/leomoraesitu/AppViagens2/releases/tag/v1.1.0-planned) |
-| **v1.0.0** | 14/10/2025 | 🚀 Primeira release estável: CRUD de roteiros, favoritos, layout responsivo e versão web. | [Ver Release](https://github.com/leomoraesitu/AppViagens2/releases/tag/v1.0.0) |
+| **v1.1.0-planned** | — | 🔄 Em desenvolvimento: autenticação por e-mail/senha, tela de perfil, upload de PDF e integração com Google Maps. | [Ver Release](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.1.0-planned) |
+| **v1.0.0** | 14/10/2025 | 🚀 Primeira release estável: CRUD de roteiros, favoritos, layout responsivo e versão web. | [Ver Release](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0) |
 
 > 📄 Veja o histórico completo de alterações no arquivo [**CHANGELOG.md**](./CHANGELOG.md).
 
