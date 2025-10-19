@@ -3,6 +3,10 @@
 [![Release Version](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/leomoraesitu/AppViagens2/releases/tag/v1.0.0)
 [![Latest Release](https://img.shields.io/github/v/release/leomoraesitu/AppViagens2?include_prereleases)](https://github.com/leomoraesitu/AppViagens2/releases)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View%20history-orange)](./CHANGELOG.md)
+![GitHub last commit](https://img.shields.io/github/last-commit/leomoraesitu/AppViagens2)
+![GitHub repo size](https://img.shields.io/github/repo-size/leomoraesitu/AppViagens2)
+![GitHub language count](https://img.shields.io/github/languages/count/leomoraesitu/AppViagens2)
+![GitHub top language](https://img.shields.io/github/languages/top/leomoraesitu/AppViagens2)
 
 > Aplicativo de viagens desenvolvido em **FlutterFlow + Firebase**.
 
