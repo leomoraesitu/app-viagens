@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mycompany.appviagens2</string>
+	<string>com.leomoraseitu.appviagens</string>
 	<key>PROJECT_ID</key>
 	<string>appviagens2-92cbf</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:651722974682:ios:d67bdf47de7b04f2444ce3</string>
+	<string>1:651722974682:ios:fbcd321a1927b26f444ce3</string>
 </dict>
 </plist>

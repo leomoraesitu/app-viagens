@@ -35,6 +35,8 @@ class _NovaViagemWizardPageWidgetState
     super.initState();
     _model = createModel(context, () => NovaViagemWizardPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'NovaViagemWizardPage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -69,6 +71,9 @@ class _NovaViagemWizardPageWidgetState
               size: 30.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('NOVA_VIAGEM_WIZARD_arrow_back_rounded_IC');
+              logFirebaseEvent('IconButton_navigate_to');
+
               context.pushNamed(ListaViagensPageWidget.routeName);
             },
           ),
@@ -94,203 +99,176 @@ class _NovaViagemWizardPageWidgetState
           centerTitle: false,
           elevation: 2.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Form(
-            key: _model.formKey,
-            autovalidateMode: AutovalidateMode.disabled,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: ScrollConfiguration(
-                    behavior: ScrollConfiguration.of(context).copyWith(
-                      scrollbars: false,
-                      dragDevices: {
-                        PointerDeviceKind.mouse,
-                        PointerDeviceKind.touch,
-                        PointerDeviceKind.stylus,
-                        PointerDeviceKind.unknown,
-                      },
-                    ),
-                    child: Scrollbar(
+        body: Form(
+          key: _model.formKey,
+          autovalidateMode: AutovalidateMode.disabled,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context).copyWith(
+                    scrollbars: false,
+                    dragDevices: {
+                      PointerDeviceKind.mouse,
+                      PointerDeviceKind.touch,
+                      PointerDeviceKind.stylus,
+                      PointerDeviceKind.unknown,
+                    },
+                  ),
+                  child: Scrollbar(
+                    controller: _model.scrollingColumnScrollController,
+                    child: SingleChildScrollView(
                       controller: _model.scrollingColumnScrollController,
-                      child: SingleChildScrollView(
-                        controller: _model.scrollingColumnScrollController,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
-                              child: Container(
-                                constraints: BoxConstraints(
-                                  maxWidth: 770.0,
-                                ),
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 12.0, 16.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 0.0),
-                                        child: wrapWithModel(
-                                          model:
-                                              _model.primaryTextFieldLocalModel,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: PrimaryTextFieldWidget(
-                                            label: 'Local',
-                                          ),
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model
-                                            .primaryTextFieldDescricaoModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: PrimaryTextFieldWidget(
-                                          label:
-                                              'Fale um pouco sobre o local...',
-                                          minLines: 5,
-                                          maxLines: 9,
-                                        ),
-                                      ),
-                                      wrapWithModel(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: Container(
+                              constraints: BoxConstraints(
+                                maxWidth: 770.0,
+                              ),
+                              decoration: BoxDecoration(),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 12.0, 16.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 0.0),
+                                      child: wrapWithModel(
                                         model:
-                                            _model.primaryTextFieldImgUrlModel,
+                                            _model.primaryTextFieldLocalModel,
                                         updateCallback: () =>
                                             safeSetState(() {}),
                                         child: PrimaryTextFieldWidget(
-                                          label: 'Cole a URL da foto aqui',
-                                          maxLines: 1,
+                                          label: 'Local',
                                         ),
                                       ),
-                                      wrapWithModel(
-                                        model:
-                                            _model.primaryTextFieldVontadeModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: PrimaryTextFieldWidget(
-                                          label:
-                                              'De 1 a 5, qual é a sua vontade?',
-                                        ),
+                                    ),
+                                    wrapWithModel(
+                                      model:
+                                          _model.primaryTextFieldDescricaoModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PrimaryTextFieldWidget(
+                                        label: 'Fale um pouco sobre o local...',
+                                        minLines: 5,
+                                        maxLines: 9,
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Investimento',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                            ),
-                                            Container(
-                                              width: 200.0,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                shape: BoxShape.rectangle,
-                                                border: Border.all(
+                                    ),
+                                    wrapWithModel(
+                                      model: _model.primaryTextFieldImgUrlModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PrimaryTextFieldWidget(
+                                        label: 'Cole a URL da foto aqui',
+                                        maxLines: 1,
+                                      ),
+                                    ),
+                                    wrapWithModel(
+                                      model:
+                                          _model.primaryTextFieldVontadeModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PrimaryTextFieldWidget(
+                                        label:
+                                            'De 1 a 5, qual é a sua vontade?',
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Investimento',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .alternate,
-                                                  width: 2.0,
+                                                      .secondaryText,
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
+                                          ),
+                                          Container(
+                                            width: 200.0,
+                                            height: 40.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              shape: BoxShape.rectangle,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
                                               ),
-                                              child: FlutterFlowCountController(
-                                                decrementIconBuilder:
-                                                    (enabled) => Icon(
-                                                  Icons.remove_rounded,
-                                                  color: enabled
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  size: 24.0,
-                                                ),
-                                                incrementIconBuilder:
-                                                    (enabled) => Icon(
-                                                  Icons.add_rounded,
-                                                  color: enabled
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  size: 24.0,
-                                                ),
-                                                countBuilder: (count) => Text(
-                                                  count.toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
+                                            ),
+                                            child: FlutterFlowCountController(
+                                              decrementIconBuilder: (enabled) =>
+                                                  Icon(
+                                                Icons.remove_rounded,
+                                                color: enabled
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                size: 24.0,
+                                              ),
+                                              incrementIconBuilder: (enabled) =>
+                                                  Icon(
+                                                Icons.add_rounded,
+                                                color: enabled
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                size: 24.0,
+                                              ),
+                                              countBuilder: (count) => Text(
+                                                count.toString(),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -302,129 +280,149 @@ class _NovaViagemWizardPageWidgetState
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                ),
-                                                count: _model
-                                                        .countControllerInvestimentoValue ??=
-                                                    100,
-                                                updateCount: (count) =>
-                                                    safeSetState(() => _model
-                                                            .countControllerInvestimentoValue =
-                                                        count),
-                                                stepSize: 100,
-                                                contentPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(12.0, 0.0,
-                                                            12.0, 0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                               ),
+                                              count: _model
+                                                      .countControllerInvestimentoValue ??=
+                                                  100,
+                                              updateCount: (count) =>
+                                                  safeSetState(() => _model
+                                                          .countControllerInvestimentoValue =
+                                                      count),
+                                              stepSize: 100,
+                                              contentPadding:
+                                                  EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
                                             ),
-                                          ].divide(SizedBox(width: 16.0)),
-                                        ),
+                                          ),
+                                        ].divide(SizedBox(width: 16.0)),
                                       ),
-                                    ]
-                                        .divide(SizedBox(height: 12.0))
-                                        .addToEnd(SizedBox(height: 32.0)),
-                                  ),
+                                    ),
+                                  ]
+                                      .divide(SizedBox(height: 12.0))
+                                      .addToEnd(SizedBox(height: 32.0)),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                  child: wrapWithModel(
-                    model: _model.primaryButtonModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: PrimaryButtonWidget(
-                      label: 'Criar viagem',
-                      variant: ButtonVariant.primary,
-                      callback: () async {
-                        var viagensRecordReference =
-                            ViagensRecord.collection.doc();
-                        await viagensRecordReference
-                            .set(createViagensRecordData(
-                          nome: _model.primaryTextFieldLocalModel
-                              .textFieldTextController.text,
-                          descricao: _model.primaryTextFieldDescricaoModel
-                              .textFieldTextController.text,
-                          imgUrl: _model.primaryTextFieldImgUrlModel
-                              .textFieldTextController.text,
-                          vontade: int.tryParse(_model
-                              .primaryTextFieldVontadeModel
-                              .textFieldTextController
-                              .text),
-                          investimento: _model.countControllerInvestimentoValue,
-                          visitado: false,
-                        ));
-                        _model.firebaseResponse =
-                            ViagensRecord.getDocumentFromData(
-                                createViagensRecordData(
-                                  nome: _model.primaryTextFieldLocalModel
-                                      .textFieldTextController.text,
-                                  descricao: _model
-                                      .primaryTextFieldDescricaoModel
-                                      .textFieldTextController
-                                      .text,
-                                  imgUrl: _model.primaryTextFieldImgUrlModel
-                                      .textFieldTextController.text,
-                                  vontade: int.tryParse(_model
-                                      .primaryTextFieldVontadeModel
-                                      .textFieldTextController
-                                      .text),
-                                  investimento:
-                                      _model.countControllerInvestimentoValue,
-                                  visitado: false,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                child: wrapWithModel(
+                  model: _model.primaryButtonModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: PrimaryButtonWidget(
+                    label: 'Criar viagem',
+                    variant: ButtonVariant.primary,
+                    callback: () async {
+                      logFirebaseEvent(
+                          'NOVA_VIAGEM_WIZARD_Container_f0ayu1m1_CA');
+                      logFirebaseEvent('PrimaryButton_backend_call');
+
+                      var viagensRecordReference =
+                          ViagensRecord.collection.doc();
+                      await viagensRecordReference.set(createViagensRecordData(
+                        nome: _model.primaryTextFieldLocalModel
+                            .textFieldTextController.text,
+                        descricao: _model.primaryTextFieldDescricaoModel
+                            .textFieldTextController.text,
+                        imgUrl: _model.primaryTextFieldImgUrlModel
+                            .textFieldTextController.text,
+                        vontade: int.tryParse(_model
+                            .primaryTextFieldVontadeModel
+                            .textFieldTextController
+                            .text),
+                        investimento: _model.countControllerInvestimentoValue,
+                        visitado: false,
+                      ));
+                      _model.firebaseResponse =
+                          ViagensRecord.getDocumentFromData(
+                              createViagensRecordData(
+                                nome: _model.primaryTextFieldLocalModel
+                                    .textFieldTextController.text,
+                                descricao: _model.primaryTextFieldDescricaoModel
+                                    .textFieldTextController.text,
+                                imgUrl: _model.primaryTextFieldImgUrlModel
+                                    .textFieldTextController.text,
+                                vontade: int.tryParse(_model
+                                    .primaryTextFieldVontadeModel
+                                    .textFieldTextController
+                                    .text),
+                                investimento:
+                                    _model.countControllerInvestimentoValue,
+                                visitado: false,
+                              ),
+                              viagensRecordReference);
+                      if ((_model.firebaseResponse != null) == true) {
+                        logFirebaseEvent('PrimaryButton_alert_dialog');
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('SUCESSO!'),
+                              content: Text('Viagem adicionada!'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Voltar para Home'),
                                 ),
-                                viagensRecordReference);
-                        if ((_model.firebaseResponse != null) == true) {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('SUCESSO!'),
-                                content: Text('Viagem adicionada!'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Voltar para Home'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+                              ],
+                            );
+                          },
+                        );
+                        logFirebaseEvent('PrimaryButton_navigate_to');
 
-                          context.pushNamed(ListaViagensPageWidget.routeName);
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('ERRO'),
-                                content:
-                                    Text('Erro desconhecido ao criar viagem'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
+                        context.pushNamed(ListaViagensPageWidget.routeName);
+                      } else {
+                        logFirebaseEvent('PrimaryButton_alert_dialog');
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('ERRO'),
+                              content:
+                                  Text('Erro desconhecido ao criar viagem'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
 
-                        safeSetState(() {});
-                      },
-                    ),
+                      safeSetState(() {});
+                    },
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
