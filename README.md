@@ -78,10 +78,34 @@ O app permite:
 
 ---
 
+## 🌐 Configuração de Ambientes
+
+📘 [Configuração do Ambiente de Produção](docs/environments/environment_configuration_production.md)
+
+> Este documento descreve as variáveis, integrações e boas práticas utilizadas no ambiente **Production**, incluindo estrutura do Firebase e GA4.  
+> As chaves e tokens reais **não são versionados** — apenas os nomes e propósitos das variáveis.
+
+---
+
 ## 🧩 Estrutura do Projeto
 
 ```
 AppViagens2/
+ ├─ .dart_tool/            → configs Dart programming language
+ ├─ .github/               → configs GitHub
+ │   ├─ PULL_REQUEST_TEMPLATE/           → dir Pull Request Templates
+ │   │   ├─ chore_pr.md                  → Chore Pull Request Template
+ │   │   ├─ docs_pr.md                   → Docs Pull Request Template
+ │   │   ├─ feature_pr.md                → Feat Pull Request Template  
+ │   │   └─ hotfix_pr.md                 → HotFix Pull Request Template
+ │   └─ pull_request_template.md         → Pull Request Template
+ ├─ android/               → configs Android
+ ├─ assets/                → arquivos anexos ao projeto
+ ├─ docs/                  → docs do projeto
+ │   └─ environments/      → dir environments
+ │       └─ environment_configuration_production.md  → documentação de configuração do ambiente Production
+ ├─ firebase/              → configs Firebase
+ ├─ ios/                   → configs iOS
  ├─ lib/
  │   ├─ backend/           → configs schema/firebase
  │   ├─ flutterflow/       → utilitários, tema, rotas
@@ -90,8 +114,14 @@ AppViagens2/
  │   ├─ index.dart         → Export pages
  │   └─ main.dart          → ponto de entrada
  ├─ screenshots/           → GIFs de demonstração
- ├─ CHANGELOG.md
- └─ README.md
+ ├─ test/                  → dir Testes
+ ├─ web/                   → configs Web
+ ├─ .flutter-plugins       → configs Flutter
+ ├─ .flutter-plugins-dependencies  → configs Flutter
+ ├─ CHANGELOG.md           → histórico de mudanças notáveis neste projeto
+ ├─ README.md              → infos gerais do projeto
+ ├─ analysis_options.yaml  → infos analyzer
+ └─ pubspec.yaml           → Flutter dependencies
 ```
 
 ---
