@@ -35,6 +35,9 @@ dependencies:
   cloud_firestore_platform_interface: 6.6.9
   cloud_firestore_web: 4.4.9
   collection: 1.19.1
+  firebase_analytics: 11.5.0
+  firebase_analytics_platform_interface: 4.4.0
+  firebase_analytics_web: 0.5.10+13
   firebase_core: 3.14.0
   firebase_core_platform_interface: 5.4.0
   firebase_core_web: 2.23.0
@@ -114,6 +117,7 @@ flutter:
     - assets/pdfs/
     - assets/jsons/
 
+    - assets/environment_values/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

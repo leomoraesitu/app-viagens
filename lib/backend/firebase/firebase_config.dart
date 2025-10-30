@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "appviagens2-92cbf",
             storageBucket: "appviagens2-92cbf.firebasestorage.app",
             messagingSenderId: "651722974682",
-            appId: "1:651722974682:web:09a3ec1884e776eb444ce3"));
+            appId: "1:651722974682:web:09a3ec1884e776eb444ce3",
+            measurementId: "G-W4FB7T3HRW"));
   } else {
     await Firebase.initializeApp();
   }

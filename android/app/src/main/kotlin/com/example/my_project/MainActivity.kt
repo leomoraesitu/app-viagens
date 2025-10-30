@@ -1,4 +1,4 @@
-package com.mycompany.appviagens2
+package com.leomoraseitu.appviagens
 
 import io.flutter.embedding.android.FlutterActivity
 

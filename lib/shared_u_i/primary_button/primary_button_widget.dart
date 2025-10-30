@@ -58,6 +58,8 @@ class _PrimaryButtonWidgetState extends State<PrimaryButtonWidget> {
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: FFButtonWidget(
           onPressed: () async {
+            logFirebaseEvent('PRIMARY_BUTTON_CRIAR_VIAGEM_BTN_ON_TAP');
+            logFirebaseEvent('Button_execute_callback');
             await widget.callback?.call();
           },
           text: widget.label!,

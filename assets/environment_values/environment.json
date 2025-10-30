@@ -1,0 +1,5 @@
+{
+  "buildEnv": "prod",
+"featureFlagsJson": "{}",
+"appName": "App Viagens"
+}

@@ -39,6 +39,8 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
     super.initState();
     _model = createModel(context, () => DetalhesViagemPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'DetalhesViagemPage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -91,6 +93,9 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                 size: 30.0,
               ),
               onPressed: () async {
+                logFirebaseEvent('DETALHES_VIAGEM_arrow_back_rounded_ICN_O');
+                logFirebaseEvent('IconButton_navigate_to');
+
                 context.pushNamed(ListaViagensPageWidget.routeName);
               },
             ),
@@ -202,6 +207,10 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                       size: 24.0,
                                                     ),
                                                     onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'DETALHES_VIAGEM_IconButtonNaoVisitado_ON');
+                                                      logFirebaseEvent(
+                                                          'IconButtonNaoVisitado_alert_dialog');
                                                       var confirmDialogResponse =
                                                           await showDialog<
                                                                   bool>(
@@ -235,11 +244,16 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                               ) ??
                                                               false;
                                                       if (confirmDialogResponse) {
+                                                        logFirebaseEvent(
+                                                            'IconButtonNaoVisitado_backend_call');
+
                                                         await widget.viagemRef!
                                                             .update(
                                                                 createViagensRecordData(
                                                           visitado: true,
                                                         ));
+                                                        logFirebaseEvent(
+                                                            'IconButtonNaoVisitado_alert_dialog');
                                                         await showDialog(
                                                           context: context,
                                                           builder:
@@ -261,6 +275,8 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                             );
                                                           },
                                                         );
+                                                        logFirebaseEvent(
+                                                            'IconButtonNaoVisitado_navigate_to');
 
                                                         context.pushNamed(
                                                             ListaViagensPageWidget
@@ -296,6 +312,10 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                       size: 24.0,
                                                     ),
                                                     onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'DETALHES_VIAGEM_IconButtonVisitado_ON_TA');
+                                                      logFirebaseEvent(
+                                                          'IconButtonVisitado_alert_dialog');
                                                       var confirmDialogResponse =
                                                           await showDialog<
                                                                   bool>(
@@ -329,11 +349,16 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                               ) ??
                                                               false;
                                                       if (confirmDialogResponse) {
+                                                        logFirebaseEvent(
+                                                            'IconButtonVisitado_backend_call');
+
                                                         await widget.viagemRef!
                                                             .update(
                                                                 createViagensRecordData(
                                                           visitado: false,
                                                         ));
+                                                        logFirebaseEvent(
+                                                            'IconButtonVisitado_alert_dialog');
                                                         await showDialog(
                                                           context: context,
                                                           builder:
@@ -355,6 +380,8 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                             );
                                                           },
                                                         );
+                                                        logFirebaseEvent(
+                                                            'IconButtonVisitado_navigate_to');
 
                                                         context.pushNamed(
                                                             ListaViagensPageWidget
@@ -568,6 +595,10 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                         label: 'Editar',
                         variant: ButtonVariant.primary,
                         callback: () async {
+                          logFirebaseEvent(
+                              'DETALHES_VIAGEM_Container_n7azablb_CALLB');
+                          logFirebaseEvent('PrimaryButton_navigate_to');
+
                           context.pushNamed(
                             EditarViagemWizardPageWidget.routeName,
                             queryParameters: {
