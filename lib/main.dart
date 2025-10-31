@@ -8,6 +8,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'index.dart';
 
+import '/custom_code/widgets/index.dart';
+import 'backend/schema/enums/enums.dart';
+import 'dart:ui' as ui;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
@@ -17,10 +21,77 @@ void main() async {
   await environmentValues.initialize();
 
   await initFirebase();
-
   await FlutterFlowTheme.initialize();
 
-  runApp(MyApp());
+  final Map<String, dynamic> flags =
+      jsonDecode(environmentValues.featureFlagsJson ?? '{}');
+
+  final bool showBanner = flags['showDebugBanner'] == true;
+
+  runApp(
+    BannerHost(
+      child: MyApp(),
+      show: showBanner,
+    ),
+  );
+}
+
+class BannerHost extends StatelessWidget {
+  const BannerHost({
+    super.key,
+    required this.child,
+    this.show,
+  });
+
+  final Widget child;
+  final bool? show;
+
+  @override
+  Widget build(BuildContext context) {
+    final shouldShow = show ?? false;
+
+    return Directionality(
+      textDirection: ui.TextDirection.ltr,
+      child: Stack(
+        children: [
+          child,
+          if (shouldShow)
+            IgnorePointer(
+              ignoring: true,
+              child: SafeArea(
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: CornerBanner(
+                    width: 120,
+                    height: 120,
+                    bannerPosition: _parseBannerPosition('topRight'),
+                    bannerColor: Colors.red,
+                    bannerLabel: 'DEV',
+                    bannerTextColor: Colors.white,
+                    bannerFontSize: 11,
+                    bannerFontWeight: 700,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+CornerBannerPosition _parseBannerPosition(String pos) {
+  switch (pos) {
+    case 'topRight':
+      return CornerBannerPosition.topRight;
+    case 'bottomLeft':
+      return CornerBannerPosition.bottomLeft;
+    case 'bottomRight':
+      return CornerBannerPosition.bottomRight;
+    case 'topLeft':
+    default:
+      return CornerBannerPosition.topLeft;
+  }
 }
 
 class MyApp extends StatefulWidget {
