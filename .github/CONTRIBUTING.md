@@ -95,12 +95,12 @@ Use mensagens de commit semânticas e objetivas, no formato:
 
 Para garantir padronização, utilize os atalhos abaixo:
 
-| Tipo                | Quando usar                                      | Link                                                                                                                                 |
-| ------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| 🚀 **Feature**      | Nova funcionalidade, tela ou recurso             | [Abrir PR de Feature](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=feature_pr.md)    |
-| 🧯 **Hotfix**       | Correção crítica em produção                     | [Abrir PR de Hotfix](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=hotfix_pr.md)      |
-| 📖 **Docs**         | Atualização de documentação, README ou templates | [Abrir PR de Documentação](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=docs_pr.md)  |
-| ⚙️ **Chore/Config** | Ajustes de ambiente, dependências ou build       | [Abrir PR de Chore/Config](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=chore_pr.md) |
+| Tipo | Quando usar | Link |
+|------|--------------|------|
+| 🚀 **Feature** | Nova funcionalidade, tela ou recurso | [Abrir PR de Feature](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=feature_pr.md) |
+| 🧯 **Hotfix** | Correção crítica em produção | [Abrir PR de Hotfix](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=hotfix_pr.md) |
+| 📖 **Docs** | Atualização de documentação | [Abrir PR de Documentação](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=docs_pr.md) |
+| ⚙️ **Chore/Config** | Ajustes de ambiente, dependências ou build | [Abrir PR de Chore/Config](https://github.com/leomoraesitu/app-viagens/compare/main...FlutterFlow?quick_pull=1&template=chore_pr.md) |
 
 ### Checklist antes do merge
 
