@@ -1,29 +1,78 @@
-# 🧩 Pull Request
+---
+name: ✨ Default Pull Request Template
+about: Template padrão para Pull Requests no repositório App Viagens.
+title: "[TIPO] Título descritivo da alteração"
+labels: ["to review"]
+---
 
-> Descreva claramente o que esta PR entrega, de forma objetiva e técnica.
+# 🧩 Descrição
+
+Descreva brevemente **o que foi feito** nesta PR, incluindo o objetivo da mudança, impacto e contexto técnico.
+
+> Exemplo:
+> - Implementa nova tela **DetalhesViagem**
+> - Corrige bug de sincronização no Firestore
+> - Atualiza variável de ambiente no FlutterFlow (Production)
 
 ---
 
-## 🧭 Contexto
-Explique **por que** essa mudança é necessária.
+# 🔖 Tipo de mudança
 
-> Sincroniza a branch `FlutterFlow` com `main`, incorporando as configurações de ambiente de produção criadas via FlutterFlow.
+Selecione o(s) tipo(s) de alteração que esta PR introduz:
 
----
-
-## ✨ Tipo de mudança
-Marque com um ✅ o(s) tipo(s) aplicável(is):
-
-- [ ] 🚀 **feat** – Nova funcionalidade
-- [ ] 🧰 **fix** – Correção de bug
-- [ ] 🧹 **chore** – Tarefa de manutenção / refatoração leve
-- [ ] 🧪 **test** – Testes automatizados ou ajustes em cobertura
-- [ ] 🧱 **refactor** – Melhoria de código sem mudança funcional
-- [ ] ⚙️ **config** – Atualização de build, CI/CD ou ambientes
-- [ ] 📖 **docs** – Atualização de documentação ou README
+- [ ] 🚀 **Feature** – Nova funcionalidade, tela ou recurso
+- [ ] 🧯 **Hotfix** – Correção crítica em produção
+- [ ] 🧱 **Refactor** – Melhoria de código sem alteração de comportamento
+- [ ] ⚙️ **Chore / Config** – Tarefas de manutenção, build, CI/CD, ou ambiente
+- [ ] 📖 **Docs** – Atualização de documentação, README ou templates
+- [ ] 🧪 **Test** – Criação ou atualização de testes
 
 ---
 
-## 🧩 O que foi feito
-Liste as principais alterações técnicas desta PR:
-...
+# 🧭 Checklist antes do merge
+
+- [ ] 🔍 Código revisado e formatado
+- [ ] ✅ Build passou com sucesso (FlutterFlow / Firebase)
+- [ ] 💾 Nenhum segredo ou chave sensível versionado
+- [ ] 🧱 Commits seguem padrão **Conventional Commits**
+- [ ] 🔄 Branch `flutterflow` atualizada com `main`
+- [ ] 🧩 Documentação atualizada (quando aplicável)
+
+---
+
+# 🧪 Testes e validação
+
+Descreva como foi testada a alteração e, se aplicável, insira capturas ou links de deploy.
+
+> Exemplo:
+> - Testado no ambiente **Production** (`app-viagens-leomoraes.flutterflow.app`)
+> - Validação do Firestore Rules e Auth no Firebase
+> - Teste manual de CRUD nas telas principais
+
+---
+
+# 🌐 Ambientes afetados
+
+| Ambiente | Impacto | Observações |
+|-----------|----------|-------------|
+| **Dev** | [ ] Sim / [x] Não |  |
+| **Production** | [ ] Sim / [x] Não |  |
+
+---
+
+# 📎 Referências e links úteis
+
+Inclua referências de commits, issues, tasks ou documentação relacionadas:
+
+> Exemplo:
+> - Closes #123  
+> - Relacionado a commit `chore(env): cria Environment "Production"`
+> - [Configuração do Ambiente de Produção](docs/environments/environment_configuration_production.md)
+
+---
+
+# 👨‍💻 Responsável
+**Autor:** @leomoraesitu  
+**Data:** _(preenchida automaticamente pelo GitHub)_
+
+---
