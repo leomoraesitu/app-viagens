@@ -39,13 +39,17 @@ O app permite:
 - ⭐ **Favoritar destinos**  
 - ☁️ **Integração com Firebase Firestore**  
 - 🎨 Interface desenvolvida no **FlutterFlow** com customizações em **Dart**
-
+- 🧩 **Feature Flags** configuradas via variável `feature_flags_json`  
+- 🧭 **Ambientes isolados** (Dev e Production) para testes e homologação
+   
 ---
 
 ## 🏗️ Arquitetura & Boas Práticas
 - Uso de **App State** e **Data Types/Enums** no FlutterFlow  
 - **Componentização** e reutilização de widgets  
-
+- **Ambientes independentes** para Dev e Prod  
+- **Corner Banner “Dev”** visível apenas quando `showDebugBanner = true`
+  
 ---
 
 ## 💻 Tecnologias Utilizadas
@@ -53,6 +57,7 @@ O app permite:
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white)
 ![FlutterFlow](https://img.shields.io/badge/FlutterFlow-20232A?logo=flutter&logoColor=61DAFB)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)
+![Google Analytics 4](https://img.shields.io/badge/GA4-Analytics-blueviolet)
 
 ---
 
@@ -81,8 +86,9 @@ O app permite:
 ## 🌐 Configuração de Ambientes
 
 📘 [Configuração do Ambiente de Produção](docs/environments/environment_configuration_production.md)
+🧪 [Configuração do Ambiente de Desenvolvimento (Dev)](docs/environments/environment_configuration_dev.md)
 
-> Este documento descreve as variáveis, integrações e boas práticas utilizadas no ambiente **Production**, incluindo estrutura do Firebase e GA4.  
+> Os arquivos de configuração descrevem as variáveis, integrações e boas práticas utilizadas em cada ambiente do App Viagens, incluindo estrutura do Firebase e GA4.  
 > As chaves e tokens reais **não são versionados** — apenas os nomes e propósitos das variáveis.
 
 ---
@@ -93,17 +99,18 @@ O app permite:
 AppViagens2/
  ├─ .dart_tool/            → configs Dart programming language
  ├─ .github/               → configs GitHub
- │   ├─ PULL_REQUEST_TEMPLATE/           → dir Pull Request Templates
- │   │   ├─ chore_pr.md                  → Chore Pull Request Template
- │   │   ├─ docs_pr.md                   → Docs Pull Request Template
- │   │   ├─ feature_pr.md                → Feat Pull Request Template  
- │   │   └─ hotfix_pr.md                 → HotFix Pull Request Template
- │   └─ pull_request_template.md         → Pull Request Template
+ │   ├─ CONTRIBUTING.md              → Guia de contribuição do App Viagens
+ │   ├─ chore_pr.md                  → Chore Pull Request Template
+ │   ├─ docs_pr.md                   → Docs Pull Request Template
+ │   ├─ feature_pr.md                → Feat Pull Request Template  
+ │   ├─ hotfix_pr.md                 → HotFix Pull Request Template
+ │   └─ pull_request_template.md     → Pull Request Template
  ├─ android/               → configs Android
  ├─ assets/                → arquivos anexos ao projeto
  ├─ docs/                  → docs do projeto
  │   └─ environments/      → dir environments
- │       └─ environment_configuration_production.md  → documentação de configuração do ambiente Production
+ │       ├─ environment_configuration_production.md  → documentação de configuração do ambiente Production
+         └─ environment_configuration_dev.md  → documentação de configuração do ambiente Dev
  ├─ firebase/              → configs Firebase
  ├─ ios/                   → configs iOS
  ├─ lib/
@@ -132,6 +139,72 @@ AppViagens2/
 * [ ] Criar tela de **Perfil do Usuário**, com edição de nome e fotos (FlutterFlow/Firebase Firestore, Storage)
 * [ ] Upload de PDF
 * [ ] Integração com Google Maps
+
+---
+
+## 🗂️ Organização e Gestão de Projeto no Trello
+
+O projeto **App Viagens** é gerenciado de forma estruturada através de um **quadro Trello**, organizado por colunas que refletem o fluxo de desenvolvimento ágil (Kanban/Scrum), facilitando o acompanhamento de features, hotfixes e documentação técnica.
+
+### 📋 Estrutura do Quadro
+
+| Coluna | Finalidade | Exemplo de cartões |
+|:--------|:------------|:------------------|
+| **Backlog do Produto** | Centraliza ideias, melhorias e hotfixes a serem priorizados. | `[UI/UX][hotfix] SafeArea ListaViagensPage`, `[UI/UX][feat] DevModePage` |
+| **Planejamento da Sprint** | Etapa de preparação antes do desenvolvimento. | Seleção de tarefas para a próxima sprint. |
+| **Em Desenvolvimento** | Tarefas em progresso, com subtarefas e checklist técnico. | `[DEV][chore] Criar Environment "Dev" no FlutterFlow` |
+| **Em Revisão / Testes** | Cards aguardando homologação visual ou QA técnico. | Validação de hotfix e GA4 DebugView. |
+| **Concluído** | Tarefas finalizadas e revisadas. | `[DEV][chore] Criar Environment "Production" no FlutterFlow` |
+| **Releases / Deploys** | Versionamento e entregas Web/APK com controle de releases. | `Release v1.0.1 – Web + APK`, `Release v1.0.0 – Web + APK` |
+| **Documentação / Referências** | Links e materiais de suporte ao projeto. | `[DOC] Links (Telas – FlutterFlow / Firebase Console / GA4 / GitHub)` |
+| **Templates** | Modelos padronizados de cartões reutilizáveis. | `[UI/UX][feat] Tela 01 – Lista de Destinos`, `[DOC] README – prints e release notes` |
+
+---
+
+### 🧩 Convenções e Padrões de Cards
+
+Cada cartão segue a convenção:
+`[ÁREA][TIPO] Título da tarefa {Ferramenta/Contexto}`
+
+| Prefixo | Significado |
+|----------|--------------|
+| `[UI/UX]` | Ajustes de interface, usabilidade e design responsivo |
+| `[DEV]` | Implementações ou rotinas de backend / lógica FlutterFlow |
+| `[FEAT]` | Novas funcionalidades |
+| `[HOTFIX]` | Correções urgentes em produção |
+| `[CHORE]` | Tarefas de manutenção ou ambiente |
+| `[DOC]` | Documentação e registro técnico |
+| `[SEC]` | Segurança da Informação |
+| `[ARQ]` | Arquitetura e modelagem de dados |
+
+---
+
+### 🧠 Boas Práticas de Organização
+- Cada card possui **checklist técnico**, **labels de status** e **responsável (LM)**.  
+- As tarefas seguem **fluxo contínuo (Kanban)**: *Backlog → Dev → Testes → Concluído*.  
+- Cards de **Documentação** e **Templates** mantêm o padrão de escrita de PRs e Readmes.  
+- Releases são vinculadas a **branches específicas** e documentadas no GitHub.  
+- Uso de **templates reutilizáveis** para garantir padronização das tarefas (ex.: descrição, critérios de aceitação, dependências).
+
+---
+
+### 🧭 Integração com o GitHub e FlutterFlow
+- Cada tarefa do Trello está vinculada a um **branch ou PR** correspondente no GitHub.  
+- O progresso no Trello reflete diretamente o estado das features e hotfixes do FlutterFlow.  
+- Cards de release (`v1.0.0`, `v1.0.1`) incluem links para o **GitHub Release** e o **Deploy Web (FlutterFlow)**.
+
+---
+
+### 📌 Benefícios da Organização
+- ✅ Rastreamento claro de progresso por sprint e por área técnica.  
+- 🧩 Integração entre **desenvolvimento, QA e documentação**.  
+- 🔄 Reuso de templates e checklists técnicos.  
+- 🔐 Aderência às práticas de **Engenharia de Software e Segurança da Informação**.  
+
+---
+
+📎 **Quadro oficial:**  
+🔗 [App Viagens – FlutterFlow + Firebase | Portfólio Eng. de Software (Trello)](https://trello.com)
 
 ---
 
