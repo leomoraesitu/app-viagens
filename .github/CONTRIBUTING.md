@@ -91,17 +91,6 @@ Use mensagens de commit semânticas e objetivas, no formato:
 
 7. **Abra uma Pull Request (PR) conforme o tipo de mudança.**
 
-### 🔁 Criação de Pull Requests
-
-Para garantir padronização, utilize os atalhos abaixo:
-
-| Tipo | Quando usar | Link |
-|------|--------------|------|
-| 🚀 **Feature** | Nova funcionalidade, tela ou recurso | [Abrir PR de Feature](https://github.com/leomoraesitu/app-viagens/compare/main...flutterflow?expand=1&quick_pull=1&template=feature_pr.md) |
-| 🧯 **Hotfix** | Correção crítica em produção | [Abrir PR de Hotfix](https://github.com/leomoraesitu/app-viagens/compare/main...flutterflow?expand=1&quick_pull=1&template=hotfix_pr.md) |
-| 📖 **Docs** | Atualização de documentação, README ou templates | [Abrir PR de Documentação](https://github.com/leomoraesitu/app-viagens/compare/main...flutterflow?expand=1&quick_pull=1&template=docs_pr.md) |
-| ⚙️ **Chore/Config** | Ajustes de ambiente, dependências ou build | [Abrir PR de Chore/Config](https://github.com/leomoraesitu/app-viagens/compare/main...flutterflow?expand=1&quick_pull=1&template=chore_pr.md) |
-
 ### Checklist antes do merge
 
  - ☑️ CI/CD passou com sucesso
@@ -120,12 +109,12 @@ Para garantir padronização, utilize os atalhos abaixo:
 
 ## 🌐 Ambientes
 
-| Ambiente             | Branch        | URL                                                                                    | Observações                   |
-| -------------------- | ------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
-| **Production**       | `main`        | [app-viagens-leomoraes.flutterflow.app](https://app-viagens-leomoraes.flutterflow.app) | Firebase Prod                 |
-| **Staging**          | `FlutterFlow` |                                                                                        | Código FlutterFlow atualizado |
-| **Production**       | `main`        | FlutterFlow -> Environment "Production"                                                | Firebase Prod                 |
-| **Dev**              | `Development` | FlutterFlow -> Environment "Dev"                                                       | Firebase Dev                  |
+| Ambiente             | Branch         | URL                                                                                    | Observações                   |
+| -------------------- | -------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+| **Production**       | `main` (GitHub) | [app-viagens-leomoraes.flutterflow.app](https://app-viagens-leomoraes.flutterflow.app) | Firebase Prod                 |
+| **Sync**             | `flutterflow` (GitHub) |                                                                                 | Código FlutterFlow atualizado |
+| **Production**       | `main` (FlutterFlow) | FlutterFlow -> Environment "Production"                                          | Firebase Prod                 |
+| **Dev**              | `Development` (FlutterFlow) | FlutterFlow -> Environment "Dev"                                          | Firebase Dev                  |
 
 📘 Documentação de ambientes:
 - [Configuração do Ambiente de Produção](docs/environments/environment_configuration_production.md)
