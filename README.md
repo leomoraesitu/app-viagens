@@ -1,7 +1,7 @@
 # <img width="50" alt="logo" src="https://github.com/user-attachments/assets/58bdc581-b54c-477d-9de6-04fb0b50e7b7" />  App Viagens | FlutterFlow + Firebase  
 
 [![Release Version](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0)
-[![Latest Release](https://img.shields.io/github/v/release/leomoraesitu/app-viagens?include_prereleases)](https://github.com/leomoraesitu/app-viagens/releases)
+[![Latest Pre-Release](https://img.shields.io/github/v/release/leomoraesitu/app-viagens?include_prereleases&sort=semver)](https://github.com/leomoraesitu/app-viagens/releases)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View%20history-orange)](./CHANGELOG.md)
 ![GitHub last commit](https://img.shields.io/github/last-commit/leomoraesitu/app-viagens)
 ![GitHub repo size](https://img.shields.io/github/repo-size/leomoraesitu/app-viagens)
@@ -85,7 +85,7 @@ O app permite:
 
 ## 🌐 Configuração de Ambientes
 
-📘 [Configuração do Ambiente de Produção](docs/environments/environment_configuration_production.md)
+📘 [Configuração do Ambiente de Produção](docs/environments/environment_configuration_production.md)\
 🧪 [Configuração do Ambiente de Desenvolvimento (Dev)](docs/environments/environment_configuration_dev.md)
 
 > Os arquivos de configuração descrevem as variáveis, integrações e boas práticas utilizadas em cada ambiente do App Viagens, incluindo estrutura do Firebase e GA4.  
@@ -237,7 +237,7 @@ As versões são publicadas em **GitHub Releases**:
 **Leonardo de Moraes Souza**
 📍 Desenvolvedor FlutterFlow + Firebase | Análise e Desenvolvimento de Sistemas (FATEC Itu)
 
-🔗 [Portfólio](https://github.com/leomoraesitu)
+🔗 [Projeto portfólio - App Viagens](https://github.com/leomoraesitu/app-viagens.git)
 
 🔗 [LinkedIn](https://www.linkedin.com/in/leomoraesitu)
 
