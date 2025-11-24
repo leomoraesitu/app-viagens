@@ -673,6 +673,7 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
                                                                                           fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
                                                                                           fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                         ),
+                                                                                    overflow: TextOverflow.fade,
                                                                                   ),
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
@@ -734,7 +735,7 @@ class _ListaViagensPageWidgetState extends State<ListaViagensPageWidget>
                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                          fontSize: 12.0,
+                                                                                          fontSize: 9.0,
                                                                                           letterSpacing: 0.0,
                                                                                           fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                           fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
