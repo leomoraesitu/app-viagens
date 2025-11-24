@@ -56,21 +56,18 @@ class BannerHost extends StatelessWidget {
         children: [
           child,
           if (shouldShow)
-            IgnorePointer(
-              ignoring: true,
-              child: SafeArea(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: CornerBanner(
-                    width: 120,
-                    height: 120,
-                    bannerPosition: _parseBannerPosition('topRight'),
-                    bannerColor: Colors.red,
-                    bannerLabel: 'DEV',
-                    bannerTextColor: Colors.white,
-                    bannerFontSize: 11,
-                    bannerFontWeight: 700,
-                  ),
+            SafeArea(
+              child: Align(
+                alignment: Alignment.topRight,
+                child: CornerBanner(
+                  width: 120,
+                  height: 120,
+                  bannerPosition: _parseBannerPosition('topRight'),
+                  bannerColor: Colors.red,
+                  bannerLabel: 'DEV',
+                  bannerTextColor: Colors.white,
+                  bannerFontSize: 11,
+                  bannerFontWeight: 700,
                 ),
               ),
             ),

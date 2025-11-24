@@ -2,14 +2,18 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/schema/enums/enums.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
+import '/custom_code/actions/index.dart'; // Imports custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'dart:ui' as ui;
+import '/flutter_flow/nav/nav.dart'; // appNavigatorKey + GoRouter
+import '/index.dart'; // DevMenuPageWidget.routeName
 
 class CornerBanner extends StatefulWidget {
   const CornerBanner({
@@ -43,27 +47,17 @@ class CornerBanner extends StatefulWidget {
 }
 
 class _CornerBannerState extends State<CornerBanner> {
-  BannerLocation _toBannerLocation(
-    CornerBannerPosition pos,
-    ui.TextDirection dir,
-  ) {
+  /// Como o app é LTR, mapeamos direto para `topStart/topEnd`.
+  BannerLocation _toBannerLocation(CornerBannerPosition pos) {
     switch (pos) {
       case CornerBannerPosition.topLeft:
-        return dir == ui.TextDirection.ltr
-            ? BannerLocation.topStart
-            : BannerLocation.topEnd;
+        return BannerLocation.topStart;
       case CornerBannerPosition.topRight:
-        return dir == ui.TextDirection.ltr
-            ? BannerLocation.topEnd
-            : BannerLocation.topStart;
+        return BannerLocation.topEnd;
       case CornerBannerPosition.bottomLeft:
-        return dir == ui.TextDirection.ltr
-            ? BannerLocation.bottomStart
-            : BannerLocation.bottomEnd;
+        return BannerLocation.bottomStart;
       case CornerBannerPosition.bottomRight:
-        return dir == ui.TextDirection.ltr
-            ? BannerLocation.bottomEnd
-            : BannerLocation.bottomStart;
+        return BannerLocation.bottomEnd;
     }
   }
 
@@ -101,19 +95,104 @@ class _CornerBannerState extends State<CornerBanner> {
 
   @override
   Widget build(BuildContext context) {
-    final ui.TextDirection textDir = Directionality.of(context);
-    final bannerLocation = _toBannerLocation(widget.bannerPosition, textDir);
+    final bannerLocation = _toBannerLocation(widget.bannerPosition);
     final label = widget.bannerLabel ?? '';
 
     return SizedBox(
       width: widget.width ?? 120,
       height: widget.height ?? 120,
-      child: Banner(
-        message: label,
-        location: bannerLocation,
-        color: widget.bannerColor,
-        textStyle: _resolveTextStyle(context),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Banner visual padrão
+          Banner(
+            message: label,
+            location: bannerLocation,
+            color: widget.bannerColor,
+            textStyle: _resolveTextStyle(context),
+          ),
+
+          // Camada de hit-test APENAS na faixa diagonal
+          ClipPath(
+            clipper: _CornerBannerHitClipper(widget.bannerPosition),
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                final ctx = appNavigatorKey.currentContext;
+                if (ctx != null) {
+                  ctx.goNamed(DevMenuPageWidget.routeName);
+                } else {
+                  debugPrint('appNavigatorKey.currentContext == null');
+                }
+              },
+              // Container transparente só pra ter área de hit-test
+              child: Container(color: Colors.transparent),
+            ),
+          ),
+        ],
       ),
     );
+  }
+}
+
+/// Clipper responsável por limitar o hit-test à faixa diagonal do Banner.
+/// OBS: esta classe é TOP-LEVEL, fora de `_CornerBannerState`.
+class _CornerBannerHitClipper extends CustomClipper<Path> {
+  final CornerBannerPosition position;
+
+  _CornerBannerHitClipper(this.position);
+
+  @override
+  Path getClip(Size size) {
+    final w = size.width;
+    final h = size.height;
+    const factor = 0.55; // controla "largura" da área clicável na faixa
+
+    final path = Path();
+
+    switch (position) {
+      case CornerBannerPosition.topRight:
+        // Triângulo no canto superior direito
+        path
+          ..moveTo(w, 0)
+          ..lineTo(w, h * factor)
+          ..lineTo(w - w * factor, 0)
+          ..close();
+        break;
+
+      case CornerBannerPosition.topLeft:
+        // Triângulo no canto superior esquerdo
+        path
+          ..moveTo(0, 0)
+          ..lineTo(w * factor, 0)
+          ..lineTo(0, h * factor)
+          ..close();
+        break;
+
+      case CornerBannerPosition.bottomRight:
+        // Triângulo no canto inferior direito
+        path
+          ..moveTo(w, h)
+          ..lineTo(w, h - h * factor)
+          ..lineTo(w - w * factor, h)
+          ..close();
+        break;
+
+      case CornerBannerPosition.bottomLeft:
+        // Triângulo no canto inferior esquerdo
+        path
+          ..moveTo(0, h)
+          ..lineTo(w * factor, h)
+          ..lineTo(0, h - h * factor)
+          ..close();
+        break;
+    }
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant _CornerBannerHitClipper oldClipper) {
+    return oldClipper.position != position;
   }
 }
