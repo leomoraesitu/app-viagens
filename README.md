@@ -1,4 +1,4 @@
-# <img width="50" alt="logo" src="https://github.com/user-attachments/assets/58bdc581-b54c-477d-9de6-04fb0b50e7b7" />  App Viagens | FlutterFlow + Firebase  
+# AppViagens2
 
 [![Release Version](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0)
 [![Latest Pre-Release](https://img.shields.io/github/v/release/leomoraesitu/app-viagens?include_prereleases&sort=semver)](https://github.com/leomoraesitu/app-viagens/releases)
@@ -8,7 +8,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/leomoraesitu/app-viagens)
 ![GitHub top language](https://img.shields.io/github/languages/top/leomoraesitu/app-viagens)
 
-> Aplicativo de viagens desenvolvido em **FlutterFlow + Firebase**.
+## Getting Started
 
 🌐 **Versão Web**: [(https://app-viagens-leomoraes.flutterflow.app)](https://app-viagens-leomoraes.flutterflow.app/)  
 📱 **Baixar APK:** [Release v1.0.0](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0)  

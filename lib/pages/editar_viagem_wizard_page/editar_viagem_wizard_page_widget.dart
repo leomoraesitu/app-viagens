@@ -172,7 +172,7 @@ class _EditarViagemWizardPageWidgetState
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: wrapWithModel(
                                             model: _model.primaryImageModel,
                                             updateCallback: () =>
