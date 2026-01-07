@@ -1,0 +1,95 @@
+# --------------------------------------------
+# Flutter / Dart – Arquivos padrão
+# --------------------------------------------
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+generated_plugin_registrant.dart
+
+# Dependências de pacotes geradas
+pubspec.lock
+
+# --------------------------------------------
+# VS Code / IDEs
+# --------------------------------------------
+.vscode/
+.idea/
+*.iml
+
+# --------------------------------------------
+# Arquivos de SO
+# --------------------------------------------
+.DS_Store
+Thumbs.db
+
+# --------------------------------------------
+# Arquivos de logs
+# --------------------------------------------
+*.log
+
+# --------------------------------------------
+# Flutter Assets - generated
+# --------------------------------------------
+**/flutter_assets/
+**/app.flx
+**/app.zip
+**/build/
+
+# --------------------------------------------
+# Android
+# --------------------------------------------
+android/local.properties
+android/key.properties
+android/app/key.jks
+android/app/upload-keystore.jks
+
+# --------------------------------------------
+# iOS
+# --------------------------------------------
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Runner.xcworkspace/
+ios/Pods/
+ios/.symlinks/
+
+# --------------------------------------------
+# Firebase – Mobile (NUNCA versionar arquivos reais)
+# --------------------------------------------
+android/app/google-services.json
+android/app/src/dev/google-services.json
+android/app/src/prod/google-services.json
+
+ios/Runner/GoogleService-Info.plist
+ios/Runner/GoogleService-Info-Dev.plist
+ios/Runner/GoogleService-Info-Prod.plist
+
+# --------------------------------------------
+# Firebase – Web (NUNCA versionar configs reais)
+# --------------------------------------------
+web/firebase-config.js
+web/firebase-config-dev.js
+web/firebase-config-prod.js
+
+# --------------------------------------------
+# 🔐 ENVIRONMENTS (NÃO VERSIONAR – variáveis locais dos devs)
+# --------------------------------------------
+assets/environment_values/environment.json
+assets/firebase/firebase_dev.json
+assets/firebase/firebase_prod.json
+assets/firebase/firebase_local.json
+
+# --------------------------------------------
+# 🔐 ENVIRONMENTS (templates .example SIM podem ser versionados)
+# --------------------------------------------
+!env-templates/
+!env-templates/*.example
+
+# --------------------------------------------
+# Cache e temporários
+# --------------------------------------------
+**/.temp/
+**/.cache/
+.cache/

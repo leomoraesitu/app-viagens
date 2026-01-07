@@ -96,6 +96,8 @@ dev_dependencies:
   lints: 4.0.0
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -119,6 +121,7 @@ flutter:
     - assets/jsons/
 
     - assets/environment_values/
+    - assets/firebase/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

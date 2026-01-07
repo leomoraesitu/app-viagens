@@ -26,6 +26,12 @@ class CornerBanner extends StatefulWidget {
     this.bannerTextColor,
     this.bannerFontSize,
     this.bannerFontWeight,
+
+    /// ✅ NOVO: callback opcional para testes (ou para override de navegação)
+    this.onTapOverride,
+
+    /// ✅ NOVO: quando true, remove o ClipPath e deixa toda a área clicável (pensado para testes)
+    this.expandHitAreaForTests = false,
   });
 
   final double? width;
@@ -41,6 +47,12 @@ class CornerBanner extends StatefulWidget {
   final Color? bannerTextColor;
   final double? bannerFontSize;
   final int? bannerFontWeight;
+
+  /// Usado em teste para interceptar o tap sem depender de router/Firebase
+  final VoidCallback? onTapOverride;
+
+  /// Quando true, a área de hit-test passa a ser o retângulo inteiro do banner (sem ClipPath)
+  final bool expandHitAreaForTests;
 
   @override
   State<CornerBanner> createState() => _CornerBannerState();
@@ -98,37 +110,56 @@ class _CornerBannerState extends State<CornerBanner> {
     final bannerLocation = _toBannerLocation(widget.bannerPosition);
     final label = widget.bannerLabel ?? '';
 
+    // 🔹 camada visual padrão do Banner
+    final bannerVisual = Banner(
+      message: label,
+      location: bannerLocation,
+      color: widget.bannerColor,
+      textStyle: _resolveTextStyle(context),
+    );
+
+    // 🔹 função que realmente será executada no onTap
+    void handleTap() {
+      // 1) Se tiver override (teste), usa ele
+      if (widget.onTapOverride != null) {
+        widget.onTapOverride!();
+        return;
+      }
+
+      // 2) Comportamento padrão de produção: navega para DevMenuPage
+      final ctx = appNavigatorKey.currentContext;
+      if (ctx != null) {
+        ctx.goNamed(DevMenuPageWidget.routeName);
+      } else {
+        debugPrint('CornerBanner: appNavigatorKey.currentContext == null');
+      }
+    }
+
+    // 🔹 camada clicável base (sem ClipPath ainda)
+    Widget tappableLayer = GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: handleTap,
+      // Container transparente só pra ter área de hit-test
+      child: Container(color: Colors.transparent),
+    );
+
+    // Em produção mantemos o ClipPath (apenas faixa diagonal).
+    // Em testes, podemos desativar para facilitar o hit-test.
+    if (!widget.expandHitAreaForTests) {
+      tappableLayer = ClipPath(
+        clipper: _CornerBannerHitClipper(widget.bannerPosition),
+        child: tappableLayer,
+      );
+    }
+
     return SizedBox(
       width: widget.width ?? 120,
       height: widget.height ?? 120,
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // Banner visual padrão
-          Banner(
-            message: label,
-            location: bannerLocation,
-            color: widget.bannerColor,
-            textStyle: _resolveTextStyle(context),
-          ),
-
-          // Camada de hit-test APENAS na faixa diagonal
-          ClipPath(
-            clipper: _CornerBannerHitClipper(widget.bannerPosition),
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: () {
-                final ctx = appNavigatorKey.currentContext;
-                if (ctx != null) {
-                  ctx.goNamed(DevMenuPageWidget.routeName);
-                } else {
-                  debugPrint('appNavigatorKey.currentContext == null');
-                }
-              },
-              // Container transparente só pra ter área de hit-test
-              child: Container(color: Colors.transparent),
-            ),
-          ),
+          bannerVisual,
+          tappableLayer,
         ],
       ),
     );

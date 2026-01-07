@@ -1,0 +1,9 @@
+{
+  "apiKey": "DEV_API_KEY_AQUI",
+  "authDomain": "appviagens2-dev.firebaseapp.com",
+  "projectId": "appviagens2-dev",
+  "storageBucket": "appviagens2-dev.appspot.com",
+  "messagingSenderId": "000000000000",
+  "appId": "1:000000000000:web:DEV_APP_ID",
+  "measurementId": "G-DEVMEASUREID"
+}

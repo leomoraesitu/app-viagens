@@ -1,0 +1,9 @@
+00:00 +0: loading C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/banner_host_test.dart
+00:00 +0: C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/router_devmenu_test.dart: (suite)
+  Skip: Depende de Firebase.initializeApp; manter como spec ate ter mock de Firebase para testes.
+00:04 +0 ~1: C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/banner_host_test.dart: BannerHost - widget tests deve mostrar CornerBanner quando show = true
+00:05 +1 ~1: C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/corner_banner_test.dart: CornerBanner - widget tests deve disparar onTapOverride quando clicado (expandHitAreaForTests = true)
+00:05 +2 ~1: C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/corner_banner_test.dart: CornerBanner - widget tests deve disparar onTapOverride quando clicado (expandHitAreaForTests = true)
+00:05 +3 ~1: C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/corner_banner_test.dart: CornerBanner - widget tests deve disparar onTapOverride quando clicado (expandHitAreaForTests = true)
+00:05 +4 ~1: C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/widget/dev_menu/corner_banner_test.dart: CornerBanner - widget tests deve renderizar mensagem DEV no Banner interno
+00:05 +5 ~1: All tests passed!

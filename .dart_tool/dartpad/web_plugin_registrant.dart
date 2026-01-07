@@ -7,6 +7,7 @@
 // ignore_for_file: type=lint
 
 import 'package:cloud_firestore_web/cloud_firestore_web.dart';
+import 'package:firebase_analytics_web/firebase_analytics_web.dart';
 import 'package:firebase_core_web/firebase_core_web.dart';
 import 'package:firebase_performance_web/firebase_performance_web.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 void registerPlugins([final Registrar? pluginRegistrar]) {
   final Registrar registrar = pluginRegistrar ?? webPluginRegistrar;
   FirebaseFirestoreWeb.registerWith(registrar);
+  FirebaseAnalyticsWeb.registerWith(registrar);
   FirebaseCoreWeb.registerWith(registrar);
   FirebasePerformanceWeb.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);

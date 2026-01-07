@@ -1,8 +1,10 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+
 import 'backend/firebase/firebase_config.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -10,7 +12,6 @@ import 'index.dart';
 
 import '/custom_code/widgets/index.dart';
 import 'backend/schema/enums/enums.dart';
-import 'dart:ui' as ui;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,7 @@ void main() async {
   await FlutterFlowTheme.initialize();
 
   final Map<String, dynamic> flags =
-      jsonDecode(environmentValues.featureFlagsJson ?? '{}');
+      jsonDecode(environmentValues.featureFlagsJson) as Map<String, dynamic>;
 
   final bool showBanner = flags['showDebugBanner'] == true;
 
@@ -92,7 +93,6 @@ CornerBannerPosition _parseBannerPosition(String pos) {
 }
 
 class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
 
@@ -113,6 +113,7 @@ class _MyAppState extends State<MyApp> {
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+
   String getRoute([RouteMatch? routeMatch]) {
     final RouteMatch lastMatch =
         routeMatch ?? _router.routerDelegate.currentConfiguration.last;
@@ -126,6 +127,7 @@ class _MyAppState extends State<MyApp> {
       _router.routerDelegate.currentConfiguration.matches
           .map((e) => getRoute(e))
           .toList();
+
   @override
   void initState() {
     super.initState();
@@ -145,7 +147,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'App Viagens',
       scrollBehavior: MyAppScrollBehavior(),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

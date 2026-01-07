@@ -1,0 +1,9 @@
+{
+  "apiKey": "PROD_API_KEY_AQUI",
+  "authDomain": "appviagens2-prod.firebaseapp.com",
+  "projectId": "appviagens2-prod",
+  "storageBucket": "appviagens2-prod.appspot.com",
+  "messagingSenderId": "111111111111",
+  "appId": "1:111111111111:web:PROD_APP_ID",
+  "measurementId": "G-PRODMEASUREID"
+}
