@@ -63,6 +63,21 @@ android {
         versionName flutterVersionName
     }
 
+    flavorDimensions "env"
+
+    productFlavors {
+        dev {
+            dimension "env" // 👈 CADA FLAVOR PRECISA TER UMA DIMENSION
+            applicationId "com.leomoraseitu.appviagensdev"
+            resValue "string", "app_name", "App Viagens Dev"
+        }
+        prod {
+            dimension "env"
+            applicationId "com.leomoraseitu.appviagens"
+            resValue "string", "app_name", "App Viagens"
+        }
+    }
+
    signingConfigs {
        release {
            keyAlias keystoreProperties['keyAlias']

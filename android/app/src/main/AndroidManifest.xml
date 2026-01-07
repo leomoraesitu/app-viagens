@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="App Viagens"
+        android:label="${applicationName}"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">

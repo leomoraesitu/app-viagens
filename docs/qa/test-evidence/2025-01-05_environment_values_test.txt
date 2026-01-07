@@ -1,0 +1,8 @@
+00:00 +0: loading C:/Users/leomo/OneDrive/Documentos/DEV/PORTFOLIO/app-viagens/test/unit/environment/environment_values_test.dart
+00:00 +0: Environment Policy - FFDevEnvironmentValues Policy: DEV (Ambiente de QA/Desenvolvimento) deve identificar ambiente DEV (isDev=true, isProd=false)
+00:00 +1: Environment Policy - FFDevEnvironmentValues Policy: DEV (Ambiente de QA/Desenvolvimento) deve expor appName coerente com DEV
+00:00 +2: Environment Policy - FFDevEnvironmentValues Policy: DEV (Ambiente de QA/Desenvolvimento) politica DEV: pode habilitar DebugBanner e DevMenuPage (flags=true)
+00:00 +3: Environment Policy - FFDevEnvironmentValues Policy: PROD (Ambiente de Producao) deve identificar ambiente PROD (isProd=true, isDev=false)
+00:00 +4: Environment Policy - FFDevEnvironmentValues Policy: PROD (Ambiente de Producao) politica de seguranca PROD: DebugBanner e DevMenuPage DEVEM estar desabilitados
+00:00 +5: Environment Policy - FFDevEnvironmentValues Policy: Fail-safe (Erros / Fallback) politica fail-safe: featureFlagsJson invalido deve degradar para "tudo desabilitado"
+00:00 +6: All tests passed!
