@@ -16,7 +16,7 @@ Os ambientes são isolados logicamente e fisicamente, seguindo boas práticas de
 | **Branch associada**        | `dev` / `hotfix/*`                           |
 | **FlutterFlow Environment** | `Dev`                                        |
 | **Firebase Project ID**     | `app-viagens-dev`                            |
-| **GA4 Measurement ID**      | `G-W4FBT3HRW`                                |
+| **GA4 Measurement ID**      | `G-XXXXXXXXXX`                                |
 | **Status**                  | Ativo – testes, homologação e experimentação |
 
 ---

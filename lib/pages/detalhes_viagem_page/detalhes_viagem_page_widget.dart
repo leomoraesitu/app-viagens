@@ -122,76 +122,171 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
             centerTitle: false,
             elevation: 0.0,
           ),
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: 770.0,
-                  ),
-                  decoration: BoxDecoration(),
-                  child: ScrollConfiguration(
-                    behavior: ScrollConfiguration.of(context).copyWith(
-                      scrollbars: false,
-                      dragDevices: {
-                        PointerDeviceKind.mouse,
-                        PointerDeviceKind.touch,
-                        PointerDeviceKind.stylus,
-                        PointerDeviceKind.unknown,
-                      },
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.0, -1.0),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 770.0,
                     ),
-                    child: Scrollbar(
-                      controller: _model.columnController,
-                      child: SingleChildScrollView(
+                    decoration: BoxDecoration(),
+                    child: ScrollConfiguration(
+                      behavior: ScrollConfiguration.of(context).copyWith(
+                        scrollbars: false,
+                        dragDevices: {
+                          PointerDeviceKind.mouse,
+                          PointerDeviceKind.touch,
+                          PointerDeviceKind.stylus,
+                          PointerDeviceKind.unknown,
+                        },
+                      ),
+                      child: Scrollbar(
                         controller: _model.columnController,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 16.0, 0.0),
-                                child: Stack(
-                                  alignment: AlignmentDirectional(1.0, -1.0),
-                                  children: [
-                                    wrapWithModel(
-                                      model: _model.primaryImageModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: PrimaryImageWidget(
-                                        imageUrl: valueOrDefault<String>(
-                                          detalhesViagemPageViagensRecord
-                                              .imgUrl,
-                                          'https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSu8kcUZLl4WFjIYk71LJlrzVHAhLFPWUS5MtSlR0rrWaSKfc202FahrpSoBd8nkTEJgorJXXEzztnW-Xtr1Bcm1JqnF2iqHdWQ2HN0Dg',
+                        child: SingleChildScrollView(
+                          controller: _model.columnController,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 16.0, 16.0, 0.0),
+                                  child: Stack(
+                                    alignment: AlignmentDirectional(1.0, -1.0),
+                                    children: [
+                                      wrapWithModel(
+                                        model: _model.primaryImageModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: PrimaryImageWidget(
+                                          imageUrl: valueOrDefault<String>(
+                                            detalhesViagemPageViagensRecord
+                                                .imgUrl,
+                                            'https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSu8kcUZLl4WFjIYk71LJlrzVHAhLFPWUS5MtSlR0rrWaSKfc202FahrpSoBd8nkTEJgorJXXEzztnW-Xtr1Bcm1JqnF2iqHdWQ2HN0Dg',
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      constraints: BoxConstraints(
-                                        maxWidth: 200.0,
-                                      ),
-                                      decoration: BoxDecoration(),
-                                      child: Padding(
+                                      Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            if (detalhesViagemPageViagensRecord
-                                                    .visitado ==
-                                                false)
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    1.0, -1.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 16.0, 0.0, 0.0),
+                                            0.0, 16.0, 16.0, 0.0),
+                                        child: Container(
+                                          constraints: BoxConstraints(
+                                            maxWidth: 200.0,
+                                          ),
+                                          decoration: BoxDecoration(),
+                                          child: Builder(
+                                            builder: (context) {
+                                              if (detalhesViagemPageViagensRecord
+                                                  .visitado) {
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          1.0, -1.0),
+                                                  child: FlutterFlowIconButton(
+                                                    borderRadius: 8.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor:
+                                                        Color(0x8C14181B),
+                                                    icon: Icon(
+                                                      Icons.check_circle,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      size: 24.0,
+                                                    ),
+                                                    onPressed: () async {
+                                                      logFirebaseEvent(
+                                                          'DETALHES_VIAGEM_IconButtonVisitado_ON_TA');
+                                                      logFirebaseEvent(
+                                                          'IconButtonVisitado_alert_dialog');
+                                                      var confirmDialogResponse =
+                                                          await showDialog<
+                                                                  bool>(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        'ATENÇÃO!'),
+                                                                    content: Text(
+                                                                        'Você quer mover essa viagem para a lista de não visitados?'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                        child: Text(
+                                                                            'Não'),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                        child: Text(
+                                                                            'Sim'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              ) ??
+                                                              false;
+                                                      if (confirmDialogResponse) {
+                                                        logFirebaseEvent(
+                                                            'IconButtonVisitado_backend_call');
+
+                                                        await widget.viagemRef!
+                                                            .update(
+                                                                createViagensRecordData(
+                                                          visitado: false,
+                                                        ));
+                                                        logFirebaseEvent(
+                                                            'IconButtonVisitado_alert_dialog');
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'SUCESSO!'),
+                                                              content: Text(
+                                                                  'Viagem movida para a lista \"Não visitados\"'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                        logFirebaseEvent(
+                                                            'IconButtonVisitado_navigate_to');
+
+                                                        context.pushNamed(
+                                                            ListaViagensPageWidget
+                                                                .routeName);
+                                                      } else {
+                                                        return;
+                                                      }
+                                                    },
+                                                  ),
+                                                );
+                                              } else {
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          1.0, -1.0),
                                                   child: FlutterFlowIconButton(
                                                     borderRadius: 8.0,
                                                     buttonSize: 40.0,
@@ -286,252 +381,157 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                                       }
                                                     },
                                                   ),
-                                                ),
-                                              ),
-                                            if (detalhesViagemPageViagensRecord
-                                                    .visitado ==
-                                                true)
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    1.0, -1.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 16.0, 0.0, 0.0),
-                                                  child: FlutterFlowIconButton(
-                                                    borderRadius: 8.0,
-                                                    buttonSize: 40.0,
-                                                    fillColor:
-                                                        Color(0x8C14181B),
-                                                    icon: Icon(
-                                                      Icons.check_circle,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      size: 24.0,
-                                                    ),
-                                                    onPressed: () async {
-                                                      logFirebaseEvent(
-                                                          'DETALHES_VIAGEM_IconButtonVisitado_ON_TA');
-                                                      logFirebaseEvent(
-                                                          'IconButtonVisitado_alert_dialog');
-                                                      var confirmDialogResponse =
-                                                          await showDialog<
-                                                                  bool>(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        'ATENÇÃO!'),
-                                                                    content: Text(
-                                                                        'Você quer mover essa viagem para a lista de não visitados?'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed: () => Navigator.pop(
-                                                                            alertDialogContext,
-                                                                            false),
-                                                                        child: Text(
-                                                                            'Não'),
-                                                                      ),
-                                                                      TextButton(
-                                                                        onPressed: () => Navigator.pop(
-                                                                            alertDialogContext,
-                                                                            true),
-                                                                        child: Text(
-                                                                            'Sim'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              ) ??
-                                                              false;
-                                                      if (confirmDialogResponse) {
-                                                        logFirebaseEvent(
-                                                            'IconButtonVisitado_backend_call');
-
-                                                        await widget.viagemRef!
-                                                            .update(
-                                                                createViagensRecordData(
-                                                          visitado: false,
-                                                        ));
-                                                        logFirebaseEvent(
-                                                            'IconButtonVisitado_alert_dialog');
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'SUCESSO!'),
-                                                              content: Text(
-                                                                  'Viagem movida para a lista \"Não visitados\"'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                        logFirebaseEvent(
-                                                            'IconButtonVisitado_navigate_to');
-
-                                                        context.pushNamed(
-                                                            ListaViagensPageWidget
-                                                                .routeName);
-                                                      } else {
-                                                        return;
-                                                      }
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                          ],
+                                                );
+                                              }
+                                            },
+                                          ),
                                         ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 12.0, 16.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      detalhesViagemPageViagensRecord.nome,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 16.0, 0.0),
+                                      child: Text(
+                                        formatNumber(
+                                          detalhesViagemPageViagensRecord
+                                              .investimento,
+                                          formatType: FormatType.decimal,
+                                          decimalType: DecimalType.commaDecimal,
+                                          currency: 'R\$',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 12.0, 16.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    detalhesViagemPageViagensRecord.nome,
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 8.0, 16.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    wrapWithModel(
+                                      model: _model.primaryRatingBarModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: PrimaryRatingBarWidget(
+                                        rating: detalhesViagemPageViagensRecord
+                                            .vontade,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        detalhesViagemPageViagensRecord.vontade
+                                            .toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 0.0, 0.0),
+                                child: Text(
+                                  'Descrição',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        font: GoogleFonts.interTight(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMedium
+                                                  .titleLarge
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMedium
+                                                  .titleLarge
                                                   .fontStyle,
                                         ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 16.0, 0.0),
-                                    child: Text(
-                                      formatNumber(
-                                        detalhesViagemPageViagensRecord
-                                            .investimento,
-                                        formatType: FormatType.decimal,
-                                        decimalType: DecimalType.commaDecimal,
-                                        currency: 'R\$',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            font: GoogleFonts.interTight(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .fontStyle,
-                                            ),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 8.0, 16.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.primaryRatingBarModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: PrimaryRatingBarWidget(
-                                      rating: detalhesViagemPageViagensRecord
-                                          .vontade,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      detalhesViagemPageViagensRecord.vontade
-                                          .toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 16.0, 0.0, 0.0),
-                              child: Text(
-                                'Descrição',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      font: GoogleFonts.interTight(
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleLarge
                                             .fontWeight,
@@ -539,25 +539,27 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                             .titleLarge
                                             .fontStyle,
                                       ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontStyle,
-                                    ),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 8.0, 16.0, 0.0),
-                              child: Text(
-                                detalhesViagemPageViagensRecord.descricao,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 8.0, 16.0, 0.0),
+                                child: Text(
+                                  detalhesViagemPageViagensRecord.descricao,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontWeight,
@@ -565,56 +567,49 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Flexible(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                    child: wrapWithModel(
-                      model: _model.primaryButtonModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: PrimaryButtonWidget(
-                        label: 'Editar',
-                        variant: ButtonVariant.primary,
-                        callback: () async {
-                          logFirebaseEvent(
-                              'DETALHES_VIAGEM_Container_n7azablb_CALLB');
-                          logFirebaseEvent('PrimaryButton_navigate_to');
+                Flexible(
+                  child: Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                      child: wrapWithModel(
+                        model: _model.primaryButtonModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: PrimaryButtonWidget(
+                          label: 'Editar',
+                          variant: ButtonVariant.primary,
+                          callback: () async {
+                            logFirebaseEvent(
+                                'DETALHES_VIAGEM_Container_n7azablb_CALLB');
+                            logFirebaseEvent('PrimaryButton_navigate_to');
 
-                          context.pushNamed(
-                            EditarViagemWizardPageWidget.routeName,
-                            queryParameters: {
-                              'viagemRef': serializeParam(
-                                detalhesViagemPageViagensRecord.reference,
-                                ParamType.DocumentReference,
-                              ),
-                            }.withoutNulls,
-                          );
-                        },
+                            context.pushNamed(
+                              EditarViagemWizardPageWidget.routeName,
+                              queryParameters: {
+                                'viagemRef': serializeParam(
+                                  detalhesViagemPageViagensRecord.reference,
+                                  ParamType.DocumentReference,
+                                ),
+                              }.withoutNulls,
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
