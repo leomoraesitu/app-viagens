@@ -158,8 +158,31 @@ class _CornerBannerState extends State<CornerBanner> {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          bannerVisual,
-          tappableLayer,
+          // Banner visual padrão
+          Banner(
+            message: label,
+            location: bannerLocation,
+            color: widget.bannerColor,
+            textStyle: _resolveTextStyle(context),
+          ),
+
+          // Camada de hit-test APENAS na faixa diagonal
+          ClipPath(
+            clipper: _CornerBannerHitClipper(widget.bannerPosition),
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                final ctx = appNavigatorKey.currentContext;
+                if (ctx != null) {
+                  ctx.goNamed(DevMenuPageWidget.routeName);
+                } else {
+                  debugPrint('appNavigatorKey.currentContext == null');
+                }
+              },
+              // Container transparente só pra ter área de hit-test
+              child: Container(color: Colors.transparent),
+            ),
+          ),
         ],
       ),
     );

@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "viagens",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "visitado",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "nome",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

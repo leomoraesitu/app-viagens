@@ -51,6 +51,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : NovaViagemWizardPageWidget(),
         ),
         FFRoute(
+          name: DevMenuPageWidget.routeName,
+          path: DevMenuPageWidget.routePath,
+          builder: (context, params) => DevMenuPageWidget(),
+        ),
+        FFRoute(
           name: DetalhesViagemPageWidget.routeName,
           path: DetalhesViagemPageWidget.routePath,
           builder: (context, params) => DetalhesViagemPageWidget(
@@ -81,11 +86,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
           ),
         ),
-        FFRoute(
-          name: DevMenuPageWidget.routeName,
-          path: DevMenuPageWidget.routePath,
-          builder: (context, params) => DevMenuPageWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 

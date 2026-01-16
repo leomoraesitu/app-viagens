@@ -1,15 +1,6 @@
-# 🔁 Environment Switching – App Viagens
+# 🔄 Troca de Ambientes
 
-## Objetivo
-Descrever o procedimento técnico para alternar ambientes (Dev/Prod)
-utilizando scripts, variáveis e configurações do FlutterFlow + Firebase.
-
----
-
-## 🧩 Pré-requisitos
-- Branch correta (dev ou main)
-- FlutterFlow Version Control ativo
-- Firebase Projects configurados
+Este documento descreve o procedimento padrão para **troca de ambientes (Dev / Prod)** no projeto FlutterFlow e Flutter, cobrindo Web, Android e iOS.
 
 ---
 
@@ -20,13 +11,62 @@ utilizando scripts, variáveis e configurações do FlutterFlow + Firebase.
 
 ---
 
+
 ## 🧪 Troca de ambiente via VS Code
-### Executar script via terminal:
-### DEV
-```bash
-./scripts/set-env-dev.ps1
-```
-### PROD
-```bash
+
+## 📁 Estrutura de Templates
+
+Diretório:
+/env-templates
+
+Arquivos:
+- firebase_dev.json.example
+- firebase_prod.json.example
+
+Atualizar com respectivos firebaseConfigs.
+
+---
+
+## 🤖 Android
+
+Criar diretórios:
+
+android/app/src/dev  
+android/app/src/prod  
+
+Adicionar em cada um o respectivo:
+google-services.json
+
+---
+
+## 🍎 iOS
+
+Diretório:
+ios/Runner
+
+Arquivos:
+- GoogleService-Info-Dev.plist
+- GoogleService-Info-Prod.plist
+
+---
+
+## ⚙️ Scripts
+
+Ativar PROD:
 ./scripts/set-env-prod.ps1
-```
+
+Ativar DEV:
+./scripts/set-env-dev.ps1
+
+---
+
+## ▶️ Execução
+
+Web:
+flutter run -d chrome
+
+Android/iOS PROD:
+flutter run --flavor prod -t lib/main.dart
+
+Android/iOS DEV:
+flutter run --flavor dev -t lib/main.dart
