@@ -86,11 +86,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
           ),
         ),
-        FFRoute(
-          name: DevMenuPageWidget.routeName,
-          path: DevMenuPageWidget.routePath,
-          builder: (context, params) => DevMenuPageWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
