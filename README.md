@@ -1,7 +1,6 @@
 # App Viagens — FlutterFlow + Firebase
 
-[![Release Version](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.0)
-[![Release](https://img.shields.io/badge/release-v1.0.1--planned-orange.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.1-planned)
+[![Release Version](https://img.shields.io/badge/release-v1.0.1-blue.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.1)
 [![Latest Pre-Release](https://img.shields.io/github/v/release/leomoraesitu/app-viagens?include_prereleases&sort=semver)](https://github.com/leomoraesitu/app-viagens/releases)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View-orange)](./CHANGELOG.md)
 ![Last Commit](https://img.shields.io/github/last-commit/leomoraesitu/app-viagens)
@@ -198,7 +197,7 @@ app-viagens/
 
 | Versão | Tipo | Descrição |
 |------|------|---------|
-| **v1.0.1-planned** | Hotfix | SafeArea, Scroll, Delay de renderização |
+| **v1.0.1** | Hotfix | SafeArea, Scroll, Delay de renderização |
 | **v1.0.0** | Stable | CRUD completo, favoritos visitados, Web + APK |
 | **v1.1.0-planned** | Feature | Auth, Perfil, PDF, Google Maps |
 
