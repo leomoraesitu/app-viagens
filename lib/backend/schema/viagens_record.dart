@@ -45,6 +45,21 @@ class ViagensRecord extends FirestoreRecord {
   int get investimento => _investimento ?? 0;
   bool hasInvestimento() => _investimento != null;
 
+  // "userRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
+
+  // "pdfPath" field.
+  String? _pdfPath;
+  String get pdfPath => _pdfPath ?? '';
+  bool hasPdfPath() => _pdfPath != null;
+
+  // "locLatLong" field.
+  LatLng? _locLatLong;
+  LatLng? get locLatLong => _locLatLong;
+  bool hasLocLatLong() => _locLatLong != null;
+
   void _initializeFields() {
     _nome = snapshotData['nome'] as String?;
     _descricao = snapshotData['descricao'] as String?;
@@ -52,6 +67,9 @@ class ViagensRecord extends FirestoreRecord {
     _vontade = castToType<int>(snapshotData['vontade']);
     _visitado = snapshotData['visitado'] as bool?;
     _investimento = castToType<int>(snapshotData['investimento']);
+    _userRef = snapshotData['userRef'] as DocumentReference?;
+    _pdfPath = snapshotData['pdfPath'] as String?;
+    _locLatLong = snapshotData['locLatLong'] as LatLng?;
   }
 
   static CollectionReference get collection =>
@@ -95,6 +113,9 @@ Map<String, dynamic> createViagensRecordData({
   int? vontade,
   bool? visitado,
   int? investimento,
+  DocumentReference? userRef,
+  String? pdfPath,
+  LatLng? locLatLong,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +125,9 @@ Map<String, dynamic> createViagensRecordData({
       'vontade': vontade,
       'visitado': visitado,
       'investimento': investimento,
+      'userRef': userRef,
+      'pdfPath': pdfPath,
+      'locLatLong': locLatLong,
     }.withoutNulls,
   );
 
@@ -120,7 +144,10 @@ class ViagensRecordDocumentEquality implements Equality<ViagensRecord> {
         e1?.imgUrl == e2?.imgUrl &&
         e1?.vontade == e2?.vontade &&
         e1?.visitado == e2?.visitado &&
-        e1?.investimento == e2?.investimento;
+        e1?.investimento == e2?.investimento &&
+        e1?.userRef == e2?.userRef &&
+        e1?.pdfPath == e2?.pdfPath &&
+        e1?.locLatLong == e2?.locLatLong;
   }
 
   @override
@@ -130,7 +157,10 @@ class ViagensRecordDocumentEquality implements Equality<ViagensRecord> {
         e?.imgUrl,
         e?.vontade,
         e?.visitado,
-        e?.investimento
+        e?.investimento,
+        e?.userRef,
+        e?.pdfPath,
+        e?.locLatLong
       ]);
 
   @override

@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/shared_u_i/primary_button/primary_button_widget.dart';
@@ -8,6 +9,20 @@ import 'package:flutter/material.dart';
 
 class NovaViagemWizardPageModel
     extends FlutterFlowModel<NovaViagemWizardPageWidget> {
+  ///  Local state fields for this page.
+
+  dynamic placesResponseState;
+
+  String? placeSelectedID;
+
+  String? placeSelectedName;
+
+  LatLng? selectedLatLong;
+
+  double? selectedLat;
+
+  double? selectedLng;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -23,8 +38,27 @@ class NovaViagemWizardPageModel
   late PrimaryTextFieldModel primaryTextFieldVontadeModel;
   // State field(s) for CountControllerInvestimento widget.
   int? countControllerInvestimentoValue;
+  // State field(s) for LocTextField widget.
+  FocusNode? locTextFieldFocusNode;
+  TextEditingController? locTextFieldTextController;
+  String? Function(BuildContext, String?)? locTextFieldTextControllerValidator;
+  // Stores action output result for [Backend Call - API (PlacesAutocompleteProxy)] action in LocTextField widget.
+  ApiCallResponse? placesResponse;
+  // Stores action output result for [Backend Call - API (PlacesAutocompleteProxyProd)] action in LocTextField widget.
+  ApiCallResponse? placesProdResponse;
+  // Model for PrimaryButtonPDF.
+  late PrimaryButtonModel primaryButtonPDFModel;
+  bool isDataUploading_uploadData10a = false;
+  FFUploadedFile uploadedLocalFile_uploadData10a =
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
+  String uploadedFileUrl_uploadData10a = '';
+
   // Model for PrimaryButton component.
   late PrimaryButtonModel primaryButtonModel;
+  // Stores action output result for [Backend Call - API (PlacesDetailsProxy)] action in PrimaryButton widget.
+  ApiCallResponse? placesDetailsResponse;
+  // Stores action output result for [Backend Call - API (PlacesDetailsProxyProd)] action in PrimaryButton widget.
+  ApiCallResponse? placesDetailsProdResponse;
   // Stores action output result for [Backend Call - Create Document] action in PrimaryButton widget.
   ViagensRecord? firebaseResponse;
 
@@ -39,6 +73,7 @@ class NovaViagemWizardPageModel
         createModel(context, () => PrimaryTextFieldModel());
     primaryTextFieldVontadeModel =
         createModel(context, () => PrimaryTextFieldModel());
+    primaryButtonPDFModel = createModel(context, () => PrimaryButtonModel());
     primaryButtonModel = createModel(context, () => PrimaryButtonModel());
   }
 
@@ -49,6 +84,10 @@ class NovaViagemWizardPageModel
     primaryTextFieldDescricaoModel.dispose();
     primaryTextFieldImgUrlModel.dispose();
     primaryTextFieldVontadeModel.dispose();
+    locTextFieldFocusNode?.dispose();
+    locTextFieldTextController?.dispose();
+
+    primaryButtonPDFModel.dispose();
     primaryButtonModel.dispose();
   }
 }
