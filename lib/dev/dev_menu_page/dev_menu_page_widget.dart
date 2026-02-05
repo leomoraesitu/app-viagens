@@ -323,6 +323,56 @@ class _DevMenuPageWidgetState extends State<DevMenuPageWidget> {
                             },
                           ),
                         ),
+                        wrapWithModel(
+                          model: _model.loginPagePrimaryButtonModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: PrimaryButtonWidget(
+                            label: 'LoginPage',
+                            variant: ButtonVariant.outline,
+                            callback: () async {
+                              logFirebaseEvent(
+                                  'DEV_MENU_LoginPagePrimaryButton_CALLBACK');
+                              logFirebaseEvent(
+                                  'LoginPagePrimaryButton_google_analytics_');
+                              logFirebaseEvent(
+                                'dev_jump_to_lista_viagens_page',
+                                parameters: {
+                                  'env': FFDevEnvironmentValues().buildEnv,
+                                  'jump_to': 'lista_viagens_page',
+                                },
+                              );
+                              logFirebaseEvent(
+                                  'LoginPagePrimaryButton_navigate_to');
+
+                              context.pushNamed(LoginPageWidget.routeName);
+                            },
+                          ),
+                        ),
+                        wrapWithModel(
+                          model: _model.perfilPagePrimaryButtonModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: PrimaryButtonWidget(
+                            label: 'PerfilPage',
+                            variant: ButtonVariant.outline,
+                            callback: () async {
+                              logFirebaseEvent(
+                                  'DEV_MENU_PerfilPagePrimaryButton_CALLBAC');
+                              logFirebaseEvent(
+                                  'PerfilPagePrimaryButton_google_analytics');
+                              logFirebaseEvent(
+                                'dev_jump_to_lista_viagens_page',
+                                parameters: {
+                                  'env': FFDevEnvironmentValues().buildEnv,
+                                  'jump_to': 'lista_viagens_page',
+                                },
+                              );
+                              logFirebaseEvent(
+                                  'PerfilPagePrimaryButton_navigate_to');
+
+                              context.pushNamed(PerfilPageWidget.routeName);
+                            },
+                          ),
+                        ),
                       ]
                           .divide(SizedBox(height: 24.0))
                           .around(SizedBox(height: 24.0)),

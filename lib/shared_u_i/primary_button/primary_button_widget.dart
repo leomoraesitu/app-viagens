@@ -72,7 +72,7 @@ class _PrimaryButtonWidgetState extends State<PrimaryButtonWidget> {
               if (widget.variant == ButtonVariant.primary) {
                 return FlutterFlowTheme.of(context).primary;
               } else if (widget.variant == ButtonVariant.secondary) {
-                return FlutterFlowTheme.of(context).primaryBackground;
+                return FlutterFlowTheme.of(context).secondary;
               } else if ((widget.variant == ButtonVariant.outline) ||
                   (widget.variant == ButtonVariant.ghost)) {
                 return Colors.transparent;

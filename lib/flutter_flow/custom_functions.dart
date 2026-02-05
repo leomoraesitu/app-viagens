@@ -12,6 +12,7 @@ import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/schema/enums/enums.dart';
+import '/auth/firebase_auth/auth_util.dart';
 
 dynamic getJsonValue(
   String jsonString,
@@ -20,4 +21,12 @@ dynamic getJsonValue(
   final Map<String, dynamic> parsed =
       json.decode(jsonString) as Map<String, dynamic>;
   return parsed[keyName];
+}
+
+LatLng? makeLatLng(
+  double? lat,
+  double? lng,
+) {
+  if (lat == null || lng == null) return null;
+  return LatLng(lat, lng);
 }

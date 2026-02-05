@@ -1,8 +1,10 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/shared_u_i/primary_button/primary_button_widget.dart';
 import '/shared_u_i/primary_image/primary_image_widget.dart';
 import '/shared_u_i/primary_rating_bar/primary_rating_bar_widget.dart';
@@ -124,30 +126,30 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
           ),
           body: SafeArea(
             top: true,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    constraints: BoxConstraints(
-                      maxWidth: 770.0,
-                    ),
-                    decoration: BoxDecoration(),
-                    child: ScrollConfiguration(
-                      behavior: ScrollConfiguration.of(context).copyWith(
-                        scrollbars: false,
-                        dragDevices: {
-                          PointerDeviceKind.mouse,
-                          PointerDeviceKind.touch,
-                          PointerDeviceKind.stylus,
-                          PointerDeviceKind.unknown,
-                        },
-                      ),
-                      child: Scrollbar(
-                        controller: _model.columnController,
-                        child: SingleChildScrollView(
-                          controller: _model.columnController,
+            child: ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(
+                scrollbars: false,
+                dragDevices: {
+                  PointerDeviceKind.mouse,
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.stylus,
+                  PointerDeviceKind.unknown,
+                },
+              ),
+              child: Scrollbar(
+                controller: _model.columnController,
+                child: SingleChildScrollView(
+                  controller: _model.columnController,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.0, -1.0),
+                        child: Container(
+                          constraints: BoxConstraints(
+                            maxWidth: 770.0,
+                          ),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -513,6 +515,93 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                   ],
                                 ),
                               ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 16.0, 16.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'DETALHES_VIAGEM_VER_NO_MAPA_BTN_ON_TAP');
+                                      if (detalhesViagemPageViagensRecord
+                                              .locLatLong !=
+                                          null) {
+                                        logFirebaseEvent('Button_navigate_to');
+
+                                        context.pushNamed(
+                                          MapPageWidget.routeName,
+                                          queryParameters: {
+                                            'viagemRef': serializeParam(
+                                              detalhesViagemPageViagensRecord
+                                                  .reference,
+                                              ParamType.DocumentReference,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      } else {
+                                        logFirebaseEvent('Button_alert_dialog');
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Erro'),
+                                              content: Text(
+                                                  'Não há localização registrada'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+                                    },
+                                    text: 'Ver no mapa',
+                                    options: FFButtonOptions(
+                                      width: double.infinity,
+                                      height: 30.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 0.0,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 0.0, 0.0),
@@ -569,46 +658,57 @@ class _DetalhesViagemPageWidgetState extends State<DetalhesViagemPageWidget> {
                                       ),
                                 ),
                               ),
+                              if (detalhesViagemPageViagensRecord.pdfPath != '')
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  child: FlutterFlowPdfViewer(
+                                    networkPath:
+                                        detalhesViagemPageViagensRecord.pdfPath,
+                                    height: 300.0,
+                                    horizontalScroll: false,
+                                  ),
+                                ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 24.0, 0.0, 24.0),
+                                  child: wrapWithModel(
+                                    model: _model.primaryButtonModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: PrimaryButtonWidget(
+                                      label: 'Editar',
+                                      variant: ButtonVariant.primary,
+                                      callback: () async {
+                                        logFirebaseEvent(
+                                            'DETALHES_VIAGEM_Container_n7azablb_CALLB');
+                                        logFirebaseEvent(
+                                            'PrimaryButton_navigate_to');
+
+                                        context.pushNamed(
+                                          EditarViagemWizardPageWidget
+                                              .routeName,
+                                          queryParameters: {
+                                            'viagemRef': serializeParam(
+                                              detalhesViagemPageViagensRecord
+                                                  .reference,
+                                              ParamType.DocumentReference,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
-                Flexible(
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                      child: wrapWithModel(
-                        model: _model.primaryButtonModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: PrimaryButtonWidget(
-                          label: 'Editar',
-                          variant: ButtonVariant.primary,
-                          callback: () async {
-                            logFirebaseEvent(
-                                'DETALHES_VIAGEM_Container_n7azablb_CALLB');
-                            logFirebaseEvent('PrimaryButton_navigate_to');
-
-                            context.pushNamed(
-                              EditarViagemWizardPageWidget.routeName,
-                              queryParameters: {
-                                'viagemRef': serializeParam(
-                                  detalhesViagemPageViagensRecord.reference,
-                                  ParamType.DocumentReference,
-                                ),
-                              }.withoutNulls,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         );
