@@ -23,6 +23,10 @@ class DevMenuPageModel extends FlutterFlowModel<DevMenuPageWidget> {
   late PrimaryButtonModel editarViagemWizardPagePrimaryButtonModel;
   // Model for ListaViagensPagePrimaryButton.
   late PrimaryButtonModel listaViagensPagePrimaryButtonModel;
+  // Model for LoginPagePrimaryButton.
+  late PrimaryButtonModel loginPagePrimaryButtonModel;
+  // Model for PerfilPagePrimaryButton.
+  late PrimaryButtonModel perfilPagePrimaryButtonModel;
 
   @override
   void initState(BuildContext context) {
@@ -34,6 +38,10 @@ class DevMenuPageModel extends FlutterFlowModel<DevMenuPageWidget> {
         createModel(context, () => PrimaryButtonModel());
     listaViagensPagePrimaryButtonModel =
         createModel(context, () => PrimaryButtonModel());
+    loginPagePrimaryButtonModel =
+        createModel(context, () => PrimaryButtonModel());
+    perfilPagePrimaryButtonModel =
+        createModel(context, () => PrimaryButtonModel());
   }
 
   @override
@@ -42,5 +50,7 @@ class DevMenuPageModel extends FlutterFlowModel<DevMenuPageWidget> {
     detalhesViagemPagePrimaryButtonModel.dispose();
     editarViagemWizardPagePrimaryButtonModel.dispose();
     listaViagensPagePrimaryButtonModel.dispose();
+    loginPagePrimaryButtonModel.dispose();
+    perfilPagePrimaryButtonModel.dispose();
   }
 }

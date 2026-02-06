@@ -9,6 +9,10 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "userRef",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "nome",
           "order": "ASCENDING"
         }
