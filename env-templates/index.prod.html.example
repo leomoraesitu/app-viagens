@@ -33,8 +33,25 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#1d2428">
 
   <link rel="manifest" href="manifest.json">
+
+<!-- ✅ Google Maps JS API (carrega cedo para evitar google.maps undefined) -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkhF4fnDFVfOWUs6SKcFK9xZwnfOj9IVU&libraries=places&loading=async"
+    async
+    defer>
+  </script>
 </head>
 <body>
+  <script src='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs' type='module'></script>
+  <script type='module'>
+  var { pdfjsLib } = globalThis;
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.mjs';
+
+  var pdfRenderOptions = {
+    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/cmaps/',
+    cMapPacked: true,
+  }
+  </script>
   <script>
     {{flutter_bootstrap_js}}
   </script>

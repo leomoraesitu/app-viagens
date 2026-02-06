@@ -1,5 +1,5 @@
 {
   "buildEnv": "prod",
-"featureFlagsJson": "{\"showDebugBanner\": false, \"showDevMenuPage\": false}",
-"appName": "App Viagens"
+  "featureFlagsJson": "{\"showDebugBanner\": false, \"showDevMenuPage\": false}",
+  "appName": "App Viagens"
 }

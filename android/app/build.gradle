@@ -67,14 +67,22 @@ android {
 
     productFlavors {
         dev {
-            dimension "env" // 👈 CADA FLAVOR PRECISA TER UMA DIMENSION
+            dimension "env"
             applicationId "com.leomoraseitu.appviagensdev"
             resValue "string", "app_name", "App Viagens Dev"
+
+            manifestPlaceholders = [
+                googleMapsApiKey: localProperties.getProperty("GOOGLE_MAPS_API_KEY_DEV", "")
+            ]
         }
         prod {
             dimension "env"
             applicationId "com.leomoraseitu.appviagens"
             resValue "string", "app_name", "App Viagens"
+
+            manifestPlaceholders = [
+                googleMapsApiKey: localProperties.getProperty("GOOGLE_MAPS_API_KEY_PROD", "")
+            ]
         }
     }
 
