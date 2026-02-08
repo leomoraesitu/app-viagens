@@ -4,7 +4,7 @@
 
 Este documento descreve a configuração dos ambientes **Development (Dev)** e **Production (Prod)** do projeto **App Viagens**, desenvolvido em **FlutterFlow + Firebase**.
 
-Os ambientes são isolados logicamente e fisicamente, seguindo boas práticas de **Engenharia de Software**, **Segurança da Informação** e **Governança de Ambientes**, garantindo previsibilidade, rastreabilidade e mitigação de riscos durante o ciclo de vida do software.
+Os ambientes são isolados **logicamente (configurações, flags e variáveis)** e **fisicamente (projetos Firebase distintos)**, seguindo boas práticas de **Engenharia de Software**, **Segurança da Informação** e **Governança de Ambientes**, garantindo previsibilidade, rastreabilidade e mitigação de riscos durante todo o ciclo de vida do software.
 
 ---
 
@@ -13,10 +13,10 @@ Os ambientes são isolados logicamente e fisicamente, seguindo boas práticas de
 | Item                        | Valor                                        |
 | --------------------------- | -------------------------------------------- |
 | **Ambiente**                | `Development`                                |
-| **Branch associada**        | `dev` / `hotfix/*`                           |
+| **Branch associada**        | `dev`, `feature/*`, `hotfix/*`               |
 | **FlutterFlow Environment** | `Dev`                                        |
 | **Firebase Project ID**     | `app-viagens-dev`                            |
-| **GA4 Measurement ID**      | `G-XXXXXXXXXX`                                |
+| **GA4 Measurement ID**      | `G-XXXXXXXXXX`                               |
 | **Status**                  | Ativo – testes, homologação e experimentação |
 
 ---
@@ -36,14 +36,14 @@ Os ambientes são isolados logicamente e fisicamente, seguindo boas práticas de
 
 ## 🔐 Variáveis de ambiente
 
-| Variável            | Dev               | Prod        | Descrição                                 |
-| ------------------- | ----------------- | ----------- | ----------------------------------------- |
-| `buildEnv`          | `dev`             | `prod`      | Define o ambiente atual de execução       |
-| `apiBaseUrl`        | Sandbox/Teste     | Produção    | Endpoint base da aplicação                |
-| `firebaseProjectId` | Dev               | Prod        | ID do projeto Firebase correspondente     |
-| `ga4MeasurementId`  | Dev               | Prod        | Measurement ID da propriedade GA4         |
-| `featureFlagsJson`  | Ativo             | Restrito    | Controle de funcionalidades experimentais |
-| `appName`           | App Viagens (Dev) | App Viagens | Nome exibido no aplicativo                |
+| Variável            | Dev               | Prod        | Descrição                                 | Origem               |
+| ------------------- | ----------------- | ----------- | ----------------------------------------- | -------------------- |
+| `buildEnv`          | `dev`             | `prod`      | Define o ambiente atual de execução       | `environment.json`   |
+| `apiBaseUrl`        | Sandbox/Teste     | Produção    | Endpoint base da aplicação                | `environment.json`   |
+| `firebaseProjectId` | Dev               | Prod        | ID do projeto Firebase correspondente     | `environment.json`   |
+| `ga4MeasurementId`  | Dev               | Prod        | Measurement ID da propriedade GA4         | Firebase / GA4       |
+| `featureFlagsJson`  | Ativo             | Restrito    | Controle de funcionalidades experimentais | JSON / Remote Config |
+| `appName`           | App Viagens (Dev) | App Viagens | Nome exibido no aplicativo                | `environment.json`   |
 
 ---
 
@@ -56,9 +56,11 @@ Os ambientes são isolados logicamente e fisicamente, seguindo boas práticas de
   * Dev: dados fictícios e anonimizados
   * Prod: dados reais de usuários
 
-<!-- * **Firebase Storage**
+* **Firebase Storage**
 
-  * Separação física por projeto Firebase -->
+  * Dev: arquivos de teste
+  * Prod: arquivos reais de usuários
+  * Separação física por projeto Firebase
 
 * **Firebase Analytics (GA4)**
 
@@ -80,20 +82,21 @@ As funcionalidades sensíveis ou em validação são controladas via JSON:
 
 * Ativo apenas no ambiente **Dev**
 * No **Prod**, flags críticas permanecem desabilitadas por padrão
+* Feature flags evitam a ativação acidental de funcionalidades experimentais em produção
 
 ---
 
 ## ⚙️ Pipeline de Deploy
 
-| Etapa | Descrição                                           |
-| ----- | --------------------------------------------------- |
-| 1️⃣   | Desenvolvimento em `dev` ou `hotfix/*`              |
-| 2️⃣   | Build no FlutterFlow (Dev Environment)              |
-| 3️⃣   | Testes funcionais, UI/UX e validação de eventos GA4 |
-| 4️⃣   | Revisão de código e checklist de segurança          |
-| 5️⃣   | Merge controlado para `main`                        |
-| 6️⃣   | Build no FlutterFlow (Prod Environment)             |
-| 7️⃣   | Publicação e monitoramento                          |
+| Etapa | Descrição                                                         |
+| ----- | ----------------------------------------------------------------- |
+| 1️⃣   | Desenvolvimento em `dev`, `feature/*` ou `hotfix/*`               |
+| 2️⃣   | Build no FlutterFlow (Dev Environment)                            |
+| 3️⃣   | Testes funcionais, UI/UX e validação de eventos GA4               |
+| 4️⃣   | Revisão de código, checklist de segurança e validação de segredos |
+| 5️⃣   | Merge controlado para `main`                                      |
+| 6️⃣   | Build no FlutterFlow (Prod Environment)                           |
+| 7️⃣   | Publicação e monitoramento                                        |
 
 ---
 
@@ -110,7 +113,7 @@ As funcionalidades sensíveis ou em validação são controladas via JSON:
 
 * Isolamento total entre projetos Firebase (Dev vs Prod)
 * Nenhuma chave ou credencial de produção reutilizada no Dev
-* Firestore Rules versionadas e equivalentes entre ambientes
+* Firestore Rules versionadas e semanticamente equivalentes entre ambientes
 * App Check:
 
   * Desativado no Dev (facilitar testes)
@@ -130,8 +133,8 @@ As funcionalidades sensíveis ou em validação são controladas via JSON:
 
 ## 📅 Última atualização
 
-**Autor:** @leomoraesitu
+**Autor:** Leonardo Moraes
 
-**Data:** 05/01/2026
+**Data:** 08/02/2026
 
 **Status:** Documento revisado, expandido para múltiplos ambientes e alinhado às práticas de engenharia e segurança

@@ -24,45 +24,35 @@
 
 # Test Results — Release v1.1.0
 
-Data: YYYY-MM-DD  
-Build/Commit: `<hash-do-commit>` (preencher)  
-Ambiente: DEV/PROD (preencher)  
+Data: 2026-02-08
+Build/Commit: 6822fe2eeba22bfc8272323c447ad54a656ce460
+Ambiente: DEV/PROD
 Executado por: Léo Moraes
 
 ---
 
 ## 1) Resultado geral
-Status: ✅ PASSOU / ❌ FALHOU (marcar)
+Status: ✅ PASSOU
 
 Resumo:
-- Automatizados essenciais: ✅/❌
-- Smoke manual (Web): ✅/❌
-- Smoke manual (Android): ✅/❌
-- Firestore Rules (Prod): ✅/❌
+- Automatizados essenciais: ✅
+- Smoke manual (Web): ✅
+- Smoke manual (Android): ✅
+- Firestore Rules (Prod): ✅
 
 ---
 
 ## 2) Evidências (logs)
 
 ### 2.1 Automatizados
-- Unit — Environment Values  
-  Teste: `test/unit/environment/environment_values_test.dart`  
-  Evidência: `qa/test-evidence/YYYY-MM-DD_environment_values_test.txt`  
-  Resultado: ✅/❌
+- Suite completa  
+  Evidência: `qa/test-evidence/2026-02-07_all_tests.txt` 
+  Resultado: ✅
 
-- Widget — Dev Menu  
-  Testes: `test/widget/dev_menu/`  
-  Evidência: `qa/test-evidence/YYYY-MM-DD_dev_menu_tests.txt`  
-  Resultado: ✅/❌
-
-- (Opcional) Suite completa  
-  Evidência: `qa/test-evidence/YYYY-MM-DD_automated_tests.txt`  
-  Resultado: ✅/❌
-
-- (Recomendado v1.1.0) Widget — Auth Guard  
+- Widget — Auth Guard
   Teste: `test/widget/auth/auth_guard_test.dart`  
-  Evidência: `qa/test-evidence/YYYY-MM-DD_auth_guard_test.txt` (se você gerar)  
-  Resultado: ✅/❌
+  Evidência: `qa/test-evidence/2026-02-07_auth_guard_test.txt`
+  Resultado: ✅
 
 ---
 
