@@ -1,75 +1,110 @@
 # App Viagens — FlutterFlow + Firebase
 
-[![Release Version](https://img.shields.io/badge/release-v1.0.1-blue.svg)](https://github.com/leomoraesitu/app-viagens/releases/tag/v1.0.1)
-[![Latest Pre-Release](https://img.shields.io/github/v/release/leomoraesitu/app-viagens?include_prereleases&sort=semver)](https://github.com/leomoraesitu/app-viagens/releases)
+[![Release](https://img.shields.io/badge/release-v1.0.1-blue)](https://github.com/leomoraesitu/app-viagens/releases)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View-orange)](./CHANGELOG.md)
 ![Last Commit](https://img.shields.io/github/last-commit/leomoraesitu/app-viagens)
-![Repo Size](https://img.shields.io/github/repo-size/leomoraesitu/app-viagens)
-![Top Language](https://img.shields.io/github/languages/top/leomoraesitu/app-viagens)
+
+---
+
+## 🚀 TL;DR Técnico
+
+- FlutterFlow + Firebase
+- Backend serverless com Cloud Functions
+- APIs REST próprias (BFF)
+- Ambientes Dev / Production isolados
+- Autenticação e segurança aplicadas
+- QA estruturado com evidências
+- Versionamento SemVer + CHANGELOG
+- Gestão de projeto por Sprints (Trello)
 
 ---
 
 ## 📖 Sobre o Projeto
 
-O **App Viagens** é um projeto de portfólio desenvolvido com **FlutterFlow + Firebase**, com foco em **Engenharia de Software**, **qualidade de código**, **arquitetura modular**, **separação de ambientes (Dev/Prod)** e **boas práticas de versionamento**.
+O **App Viagens** é um projeto de **portfólio profissional**, desenvolvido para demonstrar **Engenharia de Software aplicada**, **Segurança da Informação**, **arquitetura backend**, **qualidade**, **governança de ambientes**, **versionamento** e **gestão de projeto**.
 
-O objetivo do projeto é demonstrar, de forma prática, a construção de um aplicativo completo, com governança técnica, controle de releases, testes automatizados e documentação estruturada.
+O foco do projeto não é apenas entregar funcionalidades, mas demonstrar **como o software é planejado, construído, protegido, versionado e evoluído** em um contexto próximo ao de um ambiente profissional.
 
-### Funcionalidades principais
-- Criar, listar, visualizar e editar viagens
-- Favoritar destinos visitados
-- Persistência de dados com Firebase Firestore
-- Observabilidade com Google Analytics 4 (GA4)
+---
+
+## ⚙️ Funcionalidades Implementadas
+
+### Produto
+- CRUD completo de viagens
+- Marcação de destinos visitados
+- Perfil de usuário
+- Persistência de dados com Firestore
+
+### Engenharia & Plataforma
+- Ambientes Dev / Production totalmente isolados
 - Feature Flags por ambiente
-- Hotfixes versionados seguindo SemVer
+- DevModePage exclusiva para engenharia e QA
+- Scripts de automação para troca de ambiente
+- Observabilidade com Google Analytics 4 (GA4)
+
+### 🔐 Segurança (Sprint 4)
+- Firebase Authentication (Email/Senha)
+- Telas de Login, Cadastro e Logout
+- Guards de rota (controle de acesso)
+- Firestore Security Rules (Dev e Production)
+- Vínculo de dados ao usuário autenticado
+- Validação do fluxo em Web e Android
 
 ---
 
-## 📱 Demonstração das telas
+## 🔐 Marco Técnico — Autenticação e Segurança (Sprint 4)
 
-| Home | Criar | Detalhes | Editar | Web | DevMenu |
-|------|-------|----------|--------|------------|---------|
-| <img src="./screenshots/Tela01.gif" width="140"/> | <img src="./screenshots/Tela02.gif" width="140"/> | <img src="./screenshots/Tela03.gif" width="140"/> | <img src="./screenshots/Tela04.gif" width="140"/> | <img src="./screenshots/Tela05.gif" width="350"/> | <img src="./screenshots/Tela06.png" width="140"/> |
+A **Sprint 4** representa a transição do App Viagens de um aplicativo funcional para um **sistema seguro e controlado**, preparado para usuários reais.
 
-
----
-
-## 🌐 Acesso rápido
-
-- 🌍 **Versão Web**  
-  https://app-viagens-leomoraes.flutterflow.app
-
-- 📱 **APK Android**  
-  Disponível em **GitHub Releases**
-
-- 📄 **Histórico técnico**  
-  [`CHANGELOG.md`](./CHANGELOG.md)
+- Controle de acesso por autenticação
+- Bloqueio de leitura/escrita sem login
+- Regras de segurança aplicadas em produção
+- Base preparada para multiusuário e escala
+- Preparação do Release **v1.1.0**
 
 ---
 
-## ⚙️ Funcionalidades
+## 🔧 Backend, APIs e Cloud Functions
 
-- 📌 CRUD completo de viagens
-- ⭐ Favoritos visitados
-- ☁️ Firebase Firestore
-- 📊 Eventos e métricas com GA4
-- 🧩 Feature Flags via JSON
-- 🧭 Ambientes isolados (Dev / Production)
-- 🛠️ Widgets customizados em Dart
-- 🔁 Hotfixes controlados por release
+O App Viagens utiliza **Firebase Cloud Functions** como **camada de backend serverless**, expondo **APIs RESTful próprias** que atuam como intermediárias entre o aplicativo e serviços externos.
+
+Essa arquitetura evita o consumo direto de APIs sensíveis no frontend e garante **segurança, controle e escalabilidade**.
+
+### 🧩 Tipo de API
+- API RESTful
+- Comunicação via HTTP + JSON
+- Arquitetura stateless
+- Padrão Backend-for-Frontend (BFF)
+
+### ☁️ Cloud Functions
+- Backend serverless em Node.js
+- Encapsulamento de lógica sensível
+- Proteção de chaves de API via Secrets
+- Validação de parâmetros de entrada
+- Controle explícito de CORS
+- Separação por ambiente (Dev / Prod)
+
+### 🌐 Integrações com APIs do Google
+- Google Places API (Autocomplete e Details)
+- Google Maps Platform
+- Google Analytics 4 (GA4)
+
+As APIs do Google são acessadas **exclusivamente via backend**, garantindo:
+- Proteção das chaves
+- Controle de consumo
+- Isolamento por ambiente
+- Redução de riscos de segurança
 
 ---
 
-## 🧪 Qualidade, Testes e QA
+## 🧪 Qualidade e QA
 
-O projeto possui **estrutura dedicada de Qualidade de Software**, incluindo testes automatizados e documentação de evidências.
+- Testes unitários e de widgets
+- Validação de comportamento por ambiente
+- Evidências de teste versionadas (logs)
+- Estratégia de QA documentada
 
-### Tipos de testes implementados
-- Testes unitários de variáveis de ambiente
-- Testes de widgets (DevMenu, Banner, Router)
-- Validação de comportamento condicional por ambiente
-
-### Documentação de QA
+Estrutura:
 ```
 docs/qa/
  ├─ test-strategy.md
@@ -79,139 +114,81 @@ docs/qa/
 
 ---
 
-## 🧭 DevModePage (DevMenu)
+## 📋 Gestão de Projetos (Trello)
 
-A **DevModePage** é uma tela exclusiva do ambiente **Development**, criada para **engenharia, QA e debug controlado**, sem impacto em produção.
+O projeto foi desenvolvido com **gestão estruturada por Sprints**, utilizando **Trello** para planejamento, acompanhamento e governança.
 
-### Objetivos
-- Facilitar testes manuais
-- Acelerar navegação interna
-- Validar rotas, widgets e estados
-- Garantir isolamento entre Dev e Prod
-
-### Características
-- Disponível apenas em ambiente Dev
-- Controlada por Feature Flags
-- Não acessível em produção
-- Utilizada em testes automatizados
-
-### Implementação
-```
-lib/dev/dev_menu_page/
- ├─ dev_menu_page_widget.dart
- └─ dev_menu_page_model.dart
-```
+- Planejamento por Sprint Goal
+- Estimativas em Story Points (SP)
+- Cards de Sprint com:
+  - Escopo (inclui / não inclui)
+  - Critérios de aceitação
+  - Definition of Done (DoD)
+  - Dependências técnicas
+- Rastreabilidade entre:
+  - Planejamento
+  - Código
+  - Release
+  - Documentação
 
 ---
 
-## 🏗️ Arquitetura & Boas Práticas
+## 🧾 Versionamento e Governança
 
-- Versionamento **SemVer**
-- Padrão **Keep a Changelog**
-- Commits seguindo **Conventional Commits**
-- Feature Branch + Pull Request
-- Hotfixes isolados
-- Separação de responsabilidades
-- Código preparado para evolução contínua
+- Versionamento **Semantic Versioning (SemVer)**
+- Releases publicadas via GitHub Releases
+- Hotfixes versionados separadamente
+- CHANGELOG seguindo **Keep a Changelog**
+- Conventional Commits
+- Integração entre Sprint, versão e documentação
 
----
-
-## 🌐 Ambientes (Dev / Production)
-
-O projeto utiliza **ambientes totalmente isolados**, com variáveis, Firebase e GA4 independentes.
-
-### Documentação
-```
-docs/environments/
- ├─ environment_configuration.md
- └─ environment_switching.md
-```
-
-### Templates de ambiente
-```
-env-templates/
- ├─ environment.json.dev.example
- ├─ environment.json.prod.example
- ├─ firebase_dev.json.example
- ├─ firebase_prod.json.example
- ├─ index.dev.html.example
- └─ index.prod.html.example
-```
-
-### Scripts de automação
-```
-scripts/
- ├─ set-env-dev.ps1
- └─ set-env-prod.ps1
-```
+Exemplos:
+- `v1.0.0` — primeira release estável
+- `v1.0.1` — hotfix
+- `v1.1.0` — nova funcionalidade (Auth)
 
 ---
 
-## 🧩 Estrutura do Projeto
+## 📈 Linha do Tempo Técnica
 
-```
-app-viagens/
-├─ .dart_tool/
-├─ .github/
-|  ├─ chore_pr.md
-|  ├─ CONTRIBUTING.md
-|  ├─ docs_pr.md
-|  ├─ feature_pr.md
-|  ├─ hotfix_pr.md
-|  └─ pull_request_template.md
-├─ android/
-├─ assets/
-├─ docs/
-│  ├─ environments/
-│  └─ qa/
-│     └─ test-evidence/
-├─ env-templates/
-├─ firebase/
-├─ ios/
-├─ lib/
-│  ├─ actions/
-│  ├─ backend/
-│  ├─ custom_code/
-│  ├─ dev/dev_menu_page/
-│  ├─ flutter_flow/
-│  ├─ pages/
-│  ├─ shared_ui/
-│  ├─ environment_values.dart
-│  ├─ index.dart
-│  └─ main.dart
-├─ screenshots/
-├─ scripts/
-├─ test/
-│  ├─ unit/environment/
-│  └─ widget/dev_menu/
-├─ web/
-├─ .gitignore
-├─ CHANGELOG.md
-├─ pubspec.yaml 
-└─ README.md
-```
+| Sprint | Foco | Resultado |
+|------|------|----------|
+| Sprint 1 | CRUD & UI | Base funcional |
+| Sprint 2 | Ambientes | Governança |
+| Sprint 3 | QA & Observabilidade | Maturidade |
+| Sprint 4 | Auth & Segurança | Produção controlada |
 
 ---
 
-## 🧾 Releases
+## 🗺️ Roadmap
 
-| Versão | Tipo | Descrição |
-|------|------|---------|
-| **v1.0.1** | Hotfix | SafeArea, Scroll, Delay de renderização |
-| **v1.0.0** | Stable | CRUD completo, favoritos visitados, Web + APK |
-| **v1.1.0-planned** | Feature | Auth, Perfil, PDF, Google Maps |
+O roadmap atual do App Viagens está focado em **estabilização, refinamento de UI/UX, responsividade Web e segurança operacional**, priorizando a qualidade da experiência do usuário e a robustez do sistema.
+
+### UI / UX & Web (Hotfixes)
+- Ajuste de tamanho mínimo do container principal na `ListaViagensPage`
+- Correção de padding horizontal na `ListViewHorizontal` da `ListaViagensPage`
+- Melhoria de responsividade da lista de locais visitados
+- Correção de background na versão Web
+- Ajustes finos de layout entre Mobile e Web
+
+### Performance & Experiência do Usuário
+- Implementação de animação de loading na `ListViewLocation` (`novaViagemWizardPage`)
+- Correção de delay no carregamento do botão `IconButtonNaoVisitado` na `DetalhesViagemPage`
+- Melhoria da percepção de carregamento (loading states)
+
+### Segurança & Operação
+- Implementação de **logging persistente** no Firebase (`saveErrorLog`)
+- Preparação para análise de erros e troubleshooting em produção
+
+> O roadmap prioriza **hotfixes controlados**, mantendo estabilidade da versão publicada e alinhamento com o versionamento SemVer.
 
 ---
 
-## 🧠 Diferenciais Técnicos
+## 🌐 Acesso
 
-- Arquitetura clara e documentada
-- Separação real de ambientes
-- QA estruturado
-- Versionamento profissional
-- Governança de releases
-- Segurança da informação por design
-- Projeto escalável e evolutivo
+- Web: https://app-viagens-leomoraes.flutterflow.app
+- APK: GitHub Releases
+- Histórico técnico: CHANGELOG.md
 
 ---
 
@@ -221,12 +198,12 @@ app-viagens/
 Desenvolvedor FlutterFlow + Firebase  
 Tecnólogo em Análise e Desenvolvimento de Sistemas — FATEC Itu  
 
-🔗 GitHub: https://github.com/leomoraesitu  
-🔗 LinkedIn: https://www.linkedin.com/in/leomoraesitu  
+GitHub: https://github.com/leomoraesitu  
+LinkedIn: https://www.linkedin.com/in/leomoraesitu  
 
 ---
 
 ## 🏁 Licença
 
 Projeto educacional e demonstrativo.  
-© 2025 Leonardo de Moraes Souza — Todos os direitos reservados.
+© 2025 Leonardo de Moraes Souza
