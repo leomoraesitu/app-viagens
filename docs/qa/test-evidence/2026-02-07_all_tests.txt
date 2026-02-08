@@ -1,0 +1,16 @@
+00:00 +0: loading C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart
+00:00 +0: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart: Environment Policy - FFDevEnvironmentValues Policy: DEV (Ambiente de QA/Desenvolvimento) deve identificar ambiente DEV (isDev=true, isProd=false)
+00:00 +1: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart: Environment Policy - FFDevEnvironmentValues Policy: DEV (Ambiente de QA/Desenvolvimento) deve expor appName coerente com DEV
+00:00 +2: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart: Environment Policy - FFDevEnvironmentValues Policy: DEV (Ambiente de QA/Desenvolvimento) politica DEV: pode habilitar DebugBanner e DevMenuPage (flags=true)
+00:00 +3: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart: Environment Policy - FFDevEnvironmentValues Policy: PROD (Ambiente de Producao) deve identificar ambiente PROD (isProd=true, isDev=false)
+00:00 +4: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart: Environment Policy - FFDevEnvironmentValues Policy: PROD (Ambiente de Producao) politica de seguranca PROD: DebugBanner e DevMenuPage DEVEM estar desabilitados
+00:00 +5: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/unit/environment/environment_values_test.dart: Environment Policy - FFDevEnvironmentValues Policy: Fail-safe (Erros / Fallback) politica fail-safe: featureFlagsJson invalido deve degradar para "tudo desabilitado"
+00:00 +6: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/auth/auth_guard_test.dart: Auth Guard (smoke) Quando N├âO autenticado, deve exibir LoginPage e N├âO exibir ProtectedPage
+00:01 +7: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/auth/auth_guard_test.dart: Auth Guard (smoke) Quando autenticado, deve exibir ProtectedPage e N├âO exibir LoginPage
+00:01 +8: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/auth/auth_guard_test.dart: Auth Guard (smoke) Quando alterna de N├âO autenticado -> autenticado, deve trocar LoginPage por ProtectedPage
+00:01 +9: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/auth/auth_guard_test.dart: Auth Guard (smoke) Quando alterna de autenticado -> N├âO autenticado, deve trocar ProtectedPage por LoginPage
+00:01 +10: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/dev_menu/banner_host_test.dart: BannerHost - widget tests deve mostrar CornerBanner quando show = true
+00:02 +11: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/dev_menu/banner_host_test.dart: BannerHost - widget tests nao deve mostrar CornerBanner quando show = false
+00:02 +12: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/dev_menu/banner_host_test.dart: BannerHost - widget tests nao deve mostrar CornerBanner quando show = null (fallback)
+00:02 +13: C:/Users/leomo/OneDrive/Documentos/GitHub/app-viagens/test/widget/dev_menu/corner_banner_test.dart: CornerBanner - widget tests deve renderizar mensagem DEV no Banner interno
+00:03 +14: All tests passed!

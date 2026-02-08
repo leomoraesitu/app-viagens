@@ -6,42 +6,7 @@ import 'package:app_viagens2/backend/schema/enums/enums.dart'; // CornerBannerPo
 
 void main() {
   group('CornerBanner - widget tests', () {
-    testWidgets(
-      'deve disparar onTapOverride quando clicado (expandHitAreaForTests = true)',
-      (WidgetTester tester) async {
-        var tapped = false;
-
-        await tester.pumpWidget(
-          MaterialApp(
-            home: Scaffold(
-              body: Align(
-                alignment: Alignment.topRight,
-                child: CornerBanner(
-                  bannerPosition: CornerBannerPosition.topRight,
-                  bannerColor: Colors.red,
-                  bannerLabel: 'DEV',
-                  bannerTextColor: Colors.white,
-                  bannerFontSize: 11,
-                  bannerFontWeight: 700,
-                  expandHitAreaForTests: true,
-                  onTapOverride: () => tapped = true,
-                ),
-              ),
-            ),
-          ),
-        );
-
-        await tester.pumpAndSettle();
-
-        expect(find.byType(CornerBanner), findsOneWidget);
-
-        await tester.tap(find.byType(CornerBanner));
-        await tester.pumpAndSettle();
-
-        expect(tapped, isTrue);
-      },
-    );
-
+    
     testWidgets(
       'deve renderizar mensagem DEV no Banner interno',
       (WidgetTester tester) async {

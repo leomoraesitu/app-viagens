@@ -1,0 +1,93 @@
+# Manual QA — Release v1.1.0
+
+Data: YYYY-MM-DD  
+Versão: v1.1.0  
+Build/Commit: <hash-do-commit>  
+Ambiente: DEV / PROD (informar)  
+Executado por: Léo Moraes  
+
+---
+
+## 1) Contexto
+
+Este documento registra a execução dos **testes manuais essenciais (smoke tests)** para a Release v1.1.0 do App Viagens, complementando os testes automatizados (unit e widget).
+
+Objetivo:
+- Validar **Autenticação**
+- Confirmar **controle de acesso**
+- Verificar **Firestore Rules (Prod)**
+- Garantir **regressão funcional mínima** (UI e CRUD)
+
+---
+
+## 2) Smoke Test — Web (Chrome)
+
+| Caso | Descrição | Resultado | Observações |
+|----|----------|-----------|-------------|
+| WEB-01 | Criar conta (signup) | ⬜ PASS / ⬜ FAIL | |
+| WEB-02 | Login com conta válida | ⬜ PASS / ⬜ FAIL | |
+| WEB-03 | Logout | ⬜ PASS / ⬜ FAIL | |
+| WEB-04 | Acessar rota protegida **sem login** | ⬜ PASS / ⬜ FAIL | Deve redirecionar ou bloquear |
+| WEB-05 | CRUD mínimo (criar → listar → editar → excluir) | ⬜ PASS / ⬜ FAIL | |
+
+---
+
+## 3) Smoke Test — Android (Emulador ou Device real)
+
+Device/Emulador:
+- Modelo:
+- Versão Android:
+
+| Caso | Descrição | Resultado | Observações |
+|----|----------|-----------|-------------|
+| AND-01 | Login | ⬜ PASS / ⬜ FAIL | |
+| AND-02 | Logout | ⬜ PASS / ⬜ FAIL | |
+| AND-03 | CRUD mínimo (1 ciclo completo) | ⬜ PASS / ⬜ FAIL | |
+| AND-04 | SafeArea (header/footer sem sobreposição) | ⬜ PASS / ⬜ FAIL | Notch / gestos OK |
+
+---
+
+## 4) Segurança — Firestore Rules (Prod)
+
+Validação focada em **request.auth** e acesso indevido.
+
+| Caso | Descrição | Resultado | Observações |
+|----|----------|-----------|-------------|
+| SEC-01 | Usuário **não autenticado** tenta ler coleção protegida | ⬜ PASS / ⬜ FAIL | Deve falhar |
+| SEC-02 | Usuário **não autenticado** tenta escrever coleção protegida | ⬜ PASS / ⬜ FAIL | Deve falhar |
+| SEC-03 | Usuário autenticado acessa dados permitidos | ⬜ PASS / ⬜ FAIL | |
+| SEC-04 | Usuário autenticado tenta acessar dados de outro usuário | ⬜ PASS / ⬜ FAIL / N/A | Se aplicável |
+
+---
+
+## 5) Resultado final
+
+Status geral:
+- ⬜ PASSOU (GO para Release)
+- ⬜ FALHOU (NO-GO)
+
+Resumo:
+- Automatizados essenciais: ⬜ OK / ⬜ NOK
+- Smoke Web: ⬜ OK / ⬜ NOK
+- Smoke Android: ⬜ OK / ⬜ NOK
+- Segurança (Rules): ⬜ OK / ⬜ NOK
+
+---
+
+## 6) Observações finais
+
+- Bugs encontrados:
+  - (listar ou “Nenhum”)
+
+- Riscos conhecidos:
+  - (listar ou “Nenhum”)
+
+- Débitos técnicos aceitos para esta release:
+  - (listar ou “Nenhum”)
+
+---
+
+## 7) Aprovação
+
+Responsável pelo QA: __________________________  
+Data: __________________________
