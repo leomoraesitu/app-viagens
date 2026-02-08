@@ -105,3 +105,6 @@ assets/firebase/firebase_local.json
 **/.temp/
 **/.cache/
 .cache/
+
+# block oversized demo gifscreenshots/demo-flow.gif
+
