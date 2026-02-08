@@ -1,6 +1,6 @@
 # App Viagens — FlutterFlow + Firebase
 
-[![Release](https://img.shields.io/badge/release-v1.0.1-blue)](https://github.com/leomoraesitu/app-viagens/releases)
+[![Release](https://img.shields.io/badge/release-v1.1.0-blue)](https://github.com/leomoraesitu/app-viagens/releases)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View-orange)](./CHANGELOG.md)
 ![Last Commit](https://img.shields.io/github/last-commit/leomoraesitu/app-viagens)
 
@@ -94,6 +94,14 @@ As APIs do Google são acessadas **exclusivamente via backend**, garantindo:
 - Controle de consumo
 - Isolamento por ambiente
 - Redução de riscos de segurança
+
+---
+
+## 📱 Demonstração
+
+| Tela Inicial | Fluxo Principal |
+|--------------|-----------------|
+| <img src="./screenshots/screen-home.png" width="260"/> | <img src="./screenshots/demo-flow.gif" width="260"/> |
 
 ---
 
