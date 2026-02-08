@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDU6WGc_Vbfzwsf2jxW-byw4mgPWYSCkLM</string>
+	<string>__FIREBASE_CURRENT_KEY__</string>
 	<key>GCM_SENDER_ID</key>
 	<string>651722974682</string>
 	<key>PLIST_VERSION</key>

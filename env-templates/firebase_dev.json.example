@@ -1,5 +1,5 @@
 {
-  "apiKey": "AIzaSyDUFWGDsjmdoYL3SJ8dt53oWP6dmgze_IM",
+  "apiKey": "__FIREBASE_API_KEY__",
   "authDomain": "appviagens-6f9bc.firebaseapp.com",
   "projectId": "appviagens-6f9bc",
   "storageBucket": "appviagens-6f9bc.firebasestorage.app",

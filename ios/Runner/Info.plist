@@ -21,6 +21,11 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+
+	<!-- Google Maps: NÃO deixar hardcoded no AppDelegate.swift -->
+	<key>GOOGLE_MAPS_API_KEY</key>
+	<string>__GOOGLE_MAPS_API_KEY__</string>
+
 	<key>CFBundleURLTypes</key>
 	<array>
         <dict>
@@ -29,7 +34,6 @@
             <key>CFBundleURLSchemes</key>
             <array>
                 <!--FF_REVERSED_CLIENT_ID-->
-                
             </array>
         </dict>
 
@@ -44,9 +48,9 @@
         </array>
         </dict>
     </array>
+
     <key>FlutterDeepLinkingEnabled</key>
     <true/>
-
 
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
@@ -57,9 +61,6 @@
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
-
-
-
 
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

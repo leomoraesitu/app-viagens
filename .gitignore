@@ -1,6 +1,6 @@
-# --------------------------------------------
+# ============================================
 # Flutter / Dart – Arquivos padrão
-# --------------------------------------------
+# ============================================
 .dart_tool/
 .packages
 .pub/
@@ -9,87 +9,99 @@ build/
 .flutter-plugins-dependencies
 generated_plugin_registrant.dart
 
-# Dependências de pacotes geradas
+# Lock file (opcional: versionar só se quiser build reprodutível)
 pubspec.lock
 
-# --------------------------------------------
+# ============================================
 # VS Code / IDEs
-# --------------------------------------------
+# ============================================
 .vscode/
 .idea/
 *.iml
 
-# --------------------------------------------
+# ============================================
 # Arquivos de SO
-# --------------------------------------------
+# ============================================
 .DS_Store
 Thumbs.db
 
-# --------------------------------------------
-# Arquivos de logs
-# --------------------------------------------
+# ============================================
+# Logs / evidências locais
+# ============================================
 *.log
+qa/test-evidence/
+docs/qa/test-evidence/
 
-# --------------------------------------------
-# Flutter Assets - generated
-# --------------------------------------------
+# ============================================
+# Flutter Assets / Build gerado
+# ============================================
 **/flutter_assets/
 **/app.flx
 **/app.zip
 **/build/
 
-# --------------------------------------------
-# Android
-# --------------------------------------------
+# ============================================
+# Android – configs e signing (NUNCA versionar)
+# ============================================
 android/local.properties
 android/key.properties
-android/app/key.jks
+android/app/*.jks
+android/app/*.keystore
 android/app/upload-keystore.jks
 
-# --------------------------------------------
-# iOS
-# --------------------------------------------
+# Firebase Android
+android/app/google-services.json
+android/app/src/**/google-services.json
+
+# Permitir template example
+!android/app/google-services.json.example
+
+# ============================================
+# iOS – build, pods e signing
+# ============================================
 ios/Flutter/flutter_export_environment.sh
+ios/Flutter/ephemeral/
 ios/Runner/GeneratedPluginRegistrant.*
 ios/Runner.xcworkspace/
 ios/Pods/
 ios/.symlinks/
+ios/**/*.p12
+ios/**/*.cer
+ios/**/*.mobileprovision
 
-# --------------------------------------------
-# Firebase – Mobile (NUNCA versionar arquivos reais)
-# --------------------------------------------
-android/app/google-services.json
-android/app/src/dev/google-services.json
-android/app/src/prod/google-services.json
+# Firebase iOS
+ios/Runner/GoogleService-Info*.plist
 
-ios/Runner/GoogleService-Info.plist
-ios/Runner/GoogleService-Info-Dev.plist
-ios/Runner/GoogleService-Info-Prod.plist
+# Permitir template example
+!ios/Runner/GoogleService-Info.plist.example
 
-# --------------------------------------------
-# Firebase – Web (NUNCA versionar configs reais)
-# --------------------------------------------
+# ============================================
+# Firebase – Web (configs reais nunca versionar)
+# ============================================
 web/firebase-config.js
 web/firebase-config-dev.js
 web/firebase-config-prod.js
 
-# --------------------------------------------
-# 🔐 ENVIRONMENTS (NÃO VERSIONAR – variáveis locais dos devs)
-# --------------------------------------------
+# ============================================
+# 🔐 ENVIRONMENTS – arquivos reais (NÃO versionar)
+# ============================================
 assets/environment_values/environment.json
 assets/firebase/firebase_dev.json
 assets/firebase/firebase_prod.json
 assets/firebase/firebase_local.json
+.env
+.env.*
+*.secret.*
 
-# --------------------------------------------
-# 🔐 ENVIRONMENTS (templates .example SIM podem ser versionados)
-# --------------------------------------------
+# ============================================
+# ✅ ENV TEMPLATES – exemplos versionados
+# ============================================
 !env-templates/
-!env-templates/*.example
+!env-templates/**/*.example
 
-# --------------------------------------------
-# Cache e temporários
-# --------------------------------------------
+# ============================================
+# Cache / temporários
+# ============================================
 **/.temp/
 **/.cache/
 .cache/
