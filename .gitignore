@@ -45,9 +45,11 @@ docs/qa/test-evidence/
 # ============================================
 android/local.properties
 android/key.properties
-android/app/*.jks
-android/app/*.keystore
-android/app/upload-keystore.jks
+
+# Keystores (Play Store / Upload key)
+android/app/keystore/
+**/*.jks
+**/*.keystore
 
 # Firebase Android
 android/app/google-services.json
@@ -107,4 +109,3 @@ assets/firebase/firebase_local.json
 .cache/
 
 # block oversized demo gifscreenshots/demo-flow.gif
-

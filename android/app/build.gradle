@@ -1,9 +1,8 @@
 plugins {
-   id "com.android.application"
-   id "kotlin-android"
-   id "dev.flutter.flutter-gradle-plugin"
-   id "com.google.gms.google-services"  // Google Services plugin
-
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services" // Google Services plugin
 }
 
 def localProperties = new Properties()
@@ -33,7 +32,6 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace "com.leomoraseitu.appviagens"
     compileSdkVersion 35
-    
 
     compileOptions {
         coreLibraryDesugaringEnabled true
@@ -55,7 +53,6 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.leomoraseitu.appviagens"
         minSdkVersion 23
         targetSdkVersion 35
@@ -70,37 +67,40 @@ android {
             dimension "env"
             applicationId "com.leomoraseitu.appviagensdev"
             resValue "string", "app_name", "App Viagens Dev"
-
             manifestPlaceholders = [
                 googleMapsApiKey: localProperties.getProperty("GOOGLE_MAPS_API_KEY_DEV", "")
             ]
         }
         prod {
             dimension "env"
-            applicationId "com.leomoraseitu.appviagens"
             resValue "string", "app_name", "App Viagens"
-
             manifestPlaceholders = [
                 googleMapsApiKey: localProperties.getProperty("GOOGLE_MAPS_API_KEY_PROD", "")
             ]
         }
     }
 
-   signingConfigs {
-       release {
-           keyAlias keystoreProperties['keyAlias']
-           keyPassword keystoreProperties['keyPassword']
-           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-           storePassword keystoreProperties['storePassword']
-       }
-   }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            // Assinatura correta para Play Store (Upload Key / Play App Signing)
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // Opcional (ativar depois de testar bem):
+            // minifyEnabled true
+            // shrinkResources true
+        }
+        debug {
+            // padrão
         }
     }
 }
@@ -111,5 +111,7 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0"
+
+    // ✅ Corrigido: stdlib moderna (sem jdk7)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.1.0"
 }
