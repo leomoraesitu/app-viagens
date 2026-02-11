@@ -1,6 +1,8 @@
 # App Viagens — FlutterFlow + Firebase
 
 [![Release](https://img.shields.io/badge/release-v1.1.0-blue)](https://github.com/leomoraesitu/app-viagens/releases)
+![Status](https://img.shields.io/badge/Status-Em%20Publicação-yellow)
+![Google Play](https://img.shields.io/badge/Google%20Play-Closed%20Testing-blue)
 [![Changelog](https://img.shields.io/badge/📜%20Changelog-View-orange)](./CHANGELOG.md)
 ![Last Commit](https://img.shields.io/github/last-commit/leomoraesitu/app-viagens)
 
@@ -24,6 +26,55 @@
 O **App Viagens** é um projeto de **portfólio profissional**, desenvolvido para demonstrar **Engenharia de Software aplicada**, **Segurança da Informação**, **arquitetura backend**, **qualidade**, **governança de ambientes**, **versionamento** e **gestão de projeto**.
 
 O foco do projeto não é apenas entregar funcionalidades, mas demonstrar **como o software é planejado, construído, protegido, versionado e evoluído** em um contexto próximo ao de um ambiente profissional.
+
+---
+
+---
+
+## 🚀 Publicação na Google Play
+
+O App Viagens encontra-se atualmente em processo real de publicação na Google Play Console, seguindo o fluxo oficial de distribuição:
+
+### 📌 Status atual
+
+- ✅ Teste Interno concluído
+- ✅ Teste Fechado (Alpha) ativo
+- 🔄 Em fase de validação para acesso à Produção
+- ⏳ Aguardando cumprimento dos critérios de acesso público
+
+### 🔎 Evidência do processo
+
+Imagem real da Google Play Console demonstrando o status da faixa de teste:
+
+[docs/release/play-console-status.png](docs/release/play-console-status.png)
+
+### 🎯 Próxima etapa
+
+- Solicitar acesso à Produção
+- Publicação oficial na Google Play
+- Disponibilização pública do app
+
+---
+
+> Este projeto utiliza um fluxo real de publicação, incluindo:
+> - Declaração de Segurança de Dados
+> - Conformidade com AD ID (Android 13+)
+> - Configuração de faixas (Interno / Fechado)
+> - Testes controlados antes da produção
+
+---
+
+## 🔄 CI/CD & Release Strategy
+
+Fluxo adotado:
+
+1. Desenvolvimento (FlutterFlow + Firebase)
+2. Versionamento Git (GitHub)
+3. Build Android (.aab)
+4. Publicação em Teste Interno
+5. Publicação em Teste Fechado (Alpha)
+6. Validação de políticas (Data Safety, AD ID, Privacy)
+7. Solicitação de Produção
 
 ---
 
